@@ -1,0 +1,26 @@
+name: build
+
+on: [push]
+
+jobs:
+  MacOS:
+    name: Building on macos-lates
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Testing
+      run: |
+        swift test
+  Linux:
+    name: Building on ubuntu-latest with Swift ${{ matrix.tag }}
+    strategy:
+      matrix:
+        tag: ['5.0', '5.1', '5.2']
+    runs-on: ubuntu-latest
+    container:
+      image: swift:${{ matrix.tag }}
+    steps:
+      - uses: actions/checkout@v1
+      - name: Testing
+        run: |
+          swift test
