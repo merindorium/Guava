@@ -49,16 +49,16 @@ The standard approach implies that each factory represents a single method or pr
 ```swift
 class MultiplierTestDouble {
 
-	let multiplyMethod = TestDoubleFactory<Int>()
-	let multiplierOwnerProp = TestDoubleFactory<String>()
+    let multiplyMethod = TestDoubleFactory<Int>()
+    let multiplierOwnerProp = TestDoubleFactory<String>()
 
-	var multiplierOwner: String {
-		multiplierOwnerProp.invoke([])
-	}
+    var multiplierOwner: String {
+        multiplierOwnerProp.invoke(arguments: [])
+    }
 
-	func multiply(_ a: Int, _ b: Int) -> Int {
-		return multiplyMethod.invoke([a, b])
-	}
+    func multiply(_ a: Int, _ b: Int) -> Int {
+        return multiplyMethod.invoke(arguments: [a, b])
+    }
 }
 ```
 As you can see from example, `TestDoubleFactory` has an `invoke(arguments: [Any])` method. This method consumes incoming arguments and returns predefined value. It's not necessary to send arguments to this method but it will help `Spy` and `Fake` test doubles to work properly.
@@ -76,7 +76,7 @@ func testMultiplyStub() {
 
 	multiplierTestDouble.multiplyMethod.stub(5)
 
-	let result = calculator.multiply(3, 3)
+	let result = multiplierTestDouble.multiply(3, 3)
 	XCTAssertEqual(result, 5) // Returns `true`
 
 }
@@ -101,7 +101,7 @@ func testSpyCalled() {
 
     let spy = multiplierTestDouble.multiplyMethod.spy(10)
 
-    let result = calculator.multiply(3, 3)
+    let result = multiplierTestDouble.multiply(3, 3)
     XCTAssertEqual(result, 10)
 
     XCTAssertCalledOnce(spy)
@@ -117,7 +117,7 @@ func testSpyCalledWithArguments() {
 
     let spy = multiplierTestDouble.multiplyMethod.spy(10)
 
-    let result = calculator.multiply(3, 3)
+    let result = multiplierTestDouble.multiply(3, 3)
 
 	 XCTAssertCalled(spy, with: (3, 3))
 	 // OR
@@ -143,7 +143,7 @@ func testFake() {
         return a + b
     }
 
-    let result = calculator.multiply(3, 3)
+    let result = multiplierTestDouble.multiply(3, 3)
     XCTAssertEqual(result, 6)
 }
 ```
