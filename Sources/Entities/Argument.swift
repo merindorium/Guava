@@ -24,7 +24,11 @@ public struct Argument {
         return "\(Mirror.init(reflecting: value).subjectType)"
     }
 
-    let value: Any
+    private let value: Any
+
+    init(value: Any) {
+        self.value = value
+    }
 
     /// Asserts that expected value is equal to stored one.
     /// - Parameters:
@@ -37,10 +41,13 @@ public struct Argument {
                         position: Position,
                         file: StaticString = #file,
                         line: UInt = #line) -> Bool where T: Equatable {
-        guard let castedValue = cast(to: T.self,
-                                     argumentPosition: position,
-                                     file: file,
-                                     line: line) else { return false }
+        guard let castedValue = asSafe(T.self) else {
+                FailureReporter.handler.handleFailure(.typeMismatch(expectedType: "\(T.self)",
+                                                                    receivedType: storedType,
+                                                                    argument: position.name),
+                                                      location: ReportLocation(file: file, line: line))
+                return false
+        }
 
         if castedValue != expectedValue {
             FailureReporter.handler.handleFailure(.valueMismatch(expectedValue: "\(expectedValue)",
@@ -53,27 +60,6 @@ public struct Argument {
         return true
     }
 
-    /// Tries to cast stored value to expected `T` type and returns result as `Optional<T>`.
-    /// - Parameters:
-    ///   - expectedType: Type used for casting.
-    ///   - argumentPosition: Position of argument in method.
-    ///   - file: The file in which failure occurred. Defaults to the file name of the test case in which this function was called.
-    ///   - line: The line number on which failure occurred. Defaults to the line number on which this function was called.
-    func cast<T>(to expectedType: T.Type,
-                 argumentPosition: Position,
-                 file: StaticString = #file,
-                 line: UInt = #line) -> T? {
-        guard let castedValue = value as? T else {
-            FailureReporter.handler.handleFailure(.typeMismatch(expectedType: "\(T.self)",
-                                                               receivedType: storedType,
-                                                               argument: argumentPosition.name),
-                                                  location: ReportLocation(file: file, line: line))
-            return nil
-        }
-
-        return castedValue
-    }
-
     /// Casts stored value to expected `T` type.
     /// - Parameters:
     ///   - expectedType: Type used for casting.
@@ -84,7 +70,7 @@ public struct Argument {
                          argumentPosition: Position,
                          file: StaticString = #file,
                          line: UInt = #line) -> T {
-        guard let castedValue = value as? T else {
+        guard let castedValue = asSafe(T.self) else {
             FailureReporter.handler.handleFatalError(.typeMismatch(expectedType: "\(T.self)",
                                                                   receivedType: storedType,
                                                                   argument: argumentPosition.name),
@@ -92,5 +78,12 @@ public struct Argument {
         }
 
         return castedValue
+    }
+
+    /// Tries to cast stored value to expected `T` type and returns result as `Optional<T>`.
+    /// - Parameter expectedType: Type used for casting.
+    /// - Returns: Optional result of type casting.
+    public func asSafe<T>(_ expectedType: T.Type) -> T? {
+        return value as? T
     }
 }
