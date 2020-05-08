@@ -17,10 +17,10 @@ extension Array where Element == Argument {
 
             if strict {
                 FailureReporter.handler.handleFatalError(failure,
-                                                        location: ReportLocation(file: file, line: line))
+                                                         location: ReportLocation(file: file, line: line))
             } else {
                 FailureReporter.handler.handleFailure(failure,
-                                                     location: ReportLocation(file: file, line: line))
+                                                      location: ReportLocation(file: file, line: line))
             }
 
             return false
@@ -176,6 +176,7 @@ extension Array where Element == Argument {
     ///   - sixthType: Expected argument of type `F`.
     ///   - file: The file in which failure occurred. Defaults to the file name of the test case in which this function was called.
     ///   - line: The line number on which failure occurred. Defaults to the line number on which this function was called.
+    // swiftlint:disable function_parameter_count
     public func `as`<A, B, C, D, E, F>(_ firstType: A.Type,
                                        _ secondType: B.Type,
                                        _ thirdType: C.Type,

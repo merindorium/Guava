@@ -2,7 +2,7 @@ import Guava
 
 protocol Multiplier {
 
-    func multiply(_ a: Int, _ b: Int) -> Int
+    func multiply(_ left: Int, _ right: Int) -> Int
 }
 
 struct Calculator {
@@ -13,8 +13,8 @@ struct Calculator {
         self.multiplier = multiplier
     }
 
-    func multiply(_ a: Int, _ b: Int) -> Int {
-        return multiplier.multiply(a, b)
+    func multiply(_ left: Int, _ right: Int) -> Int {
+        return multiplier.multiply(left, right)
     }
 }
 
@@ -22,7 +22,7 @@ class MultiplierTestDouble: Multiplier {
 
     var multiplyMethod = TestDoubleFactory<Int>()
 
-    func multiply(_ a: Int, _ b: Int) -> Int {
-        return multiplyMethod.invoke(arguments: [a, b])
+    func multiply(_ left: Int, _ right: Int) -> Int {
+        return multiplyMethod.invoke(arguments: [left, right])
     }
 }

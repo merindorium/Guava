@@ -10,7 +10,7 @@ let package = Package(
     products: [
         .library(
             name: "Guava",
-            targets: ["Guava"]),
+            targets: ["Guava"])
     ],
     dependencies: [],
     targets: [
@@ -20,6 +20,6 @@ let package = Package(
             path: "Sources"),
         .testTarget(
             name: "GuavaTests",
-            dependencies: ["Guava"]),
+            dependencies: ["Guava"])
     ]
 )
