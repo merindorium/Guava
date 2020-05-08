@@ -1,5 +1,5 @@
-import XCTest
 import Guava
+import XCTest
 
 final class GuavaReporterTests: XCTestCase {
 

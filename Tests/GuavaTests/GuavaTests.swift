@@ -1,5 +1,5 @@
-import XCTest
 import Guava
+import XCTest
 
 final class GuavaTests: XCTestCase {
 
@@ -49,9 +49,9 @@ final class GuavaTests: XCTestCase {
         let calculator = Calculator(multiplier: multiplierTestDouble)
 
         multiplierTestDouble.multiplyMethod.fake { args in
-            let (a, b) = args.as(Int.self, Int.self)
+            let (left, right) = args.as(Int.self, Int.self)
 
-            return a + b
+            return left + right
         }
 
         let result = calculator.multiply(3, 3)
@@ -63,7 +63,6 @@ final class GuavaTests: XCTestCase {
         ("testSpyCalled", testSpyCalled),
         ("testSpyNotCalled", testSpyNotCalled),
         ("testSpyCalledWithArguments", testSpyCalledWithArguments),
-        ("testFake", testFake),
-
+        ("testFake", testFake)
     ]
 }

@@ -13,5 +13,4 @@ extension Stub: Invokable {
     func invoke(arguments: [Any]) -> Value {
         return stubbedValue
     }
-
 }
