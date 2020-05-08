@@ -78,20 +78,17 @@ func testMultiplyStub() {
 
 	let result = multiplierTestDouble.multiply(3, 3)
 	XCTAssertEqual(result, 5) // Returns `true`
-
 }
 ```
 
 ## Spy
 
-`Spy` is a `Stub` which is very useful when you need to assert what arguments has been passed to certain method or property. By using `invoke([...])` method `Spy` will record incoming values.
-
-> ℹ️ Note: Currently `Spy` each call will rewrite call arguments thus only the last one will be available.
+`Spy` is a `Stub` which is very useful when you need to assert what arguments has been passed to certain method or property. By using `invoke(arguments: [...])` method `Spy` will record incoming values.
 
 There is two ways of working with `Spy`:
 
 - Use Guava's builtin `XCTAssertCalled` functions
-- Use `Spy`'s `callCount` and `callArguments` properties directly with testing library of your choice.
+- Use `Spy`'s `calls` property directly with testing library of your choice.
 
 #### Asserts that `Spy` was called
 
@@ -106,7 +103,7 @@ func testSpyCalled() {
 
     XCTAssertCalledOnce(spy)
     // OR
-    XCTAssertEqual(spy.callCount, 1)
+    XCTAssertEqual(spy.calls.count, 1)
 }
 ```
 #### Asserts that `Spy` was called with certain arguments
@@ -119,11 +116,14 @@ func testSpyCalledWithArguments() {
 
     let result = multiplierTestDouble.multiply(3, 3)
 
-	 XCTAssertCalled(spy, with: (3, 3))
+    XCTAssertCalled(spy, with: (3, 3))
 	 // OR
-	 let (a, b) = spy.calledArguments.as(Int.self, Int.self)
-	 XCTAssertEqual(a, 3)
-	 XCTAssertEqual(b, 3)
+    guard let (a, b) = spy.calls.last?.arguments.as(Int.self, Int.self) else {
+        XCTFail("Method was not called")
+        return
+    }
+    XCTAssertEqual(a, 3)
+    XCTAssertEqual(b, 3)
 }
 ```
 
