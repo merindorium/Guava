@@ -2,12 +2,12 @@
 public struct MethodCall {
 
     /// Closure that stores assertion logic.
-    private let assertionClosure: (RecordedMethodCall) -> Result<Void, Failure>
+    private let assertionClosure: (RecordedMethodCall) -> Result<Void, AssertionFailure>
 
     /// Asserts that expected method call is equal to recorded one.
     /// - Parameter methodCall: Recorded method call.
     /// - Returns: Assertion result.
-    public func assertEquals(to methodCall: RecordedMethodCall) -> Result<Void, Failure> {
+    public func assertEquals(to methodCall: RecordedMethodCall) -> Result<Void, AssertionFailure> {
         return assertionClosure(methodCall)
     }
 }

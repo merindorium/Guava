@@ -3,9 +3,9 @@ extension Array where Element == Argument {
     /// Asserts that arguments array is greater than or equal to expected size.
     /// - Parameters:
     ///   - expectedSize: Expected arguments array size.
-    func assertSize(of expectedSize: Int) -> Result<Void, Failure> {
+    func assertSize(of expectedSize: Int) -> Result<Void, AssertionFailure> {
         guard count >= expectedSize else {
-            let failure: Failure = .argumentsCountMismatch(expectedCount: expectedSize,
+            let failure: AssertionFailure = .argumentsCountMismatch(expectedCount: expectedSize,
                                                            providedCount: count)
 
             return .failure(failure)

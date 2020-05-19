@@ -1,4 +1,4 @@
-public enum Failure: Error {
+public enum AssertionFailure: Error {
 
     case nilValue
     case argumentsCountMismatch(expectedCount: Int, providedCount: Int)
@@ -10,7 +10,7 @@ public enum Failure: Error {
     case expectedToBeCalledTimes(expectedCount: Int, calledCount: Int)
 }
 
-extension Failure {
+extension AssertionFailure {
 
     public var message: String {
         switch self {
