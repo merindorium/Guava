@@ -6,6 +6,6 @@ public struct ReportLocation {
 
 public protocol FailureReportHandler {
 
-    func handleFailure(_ failure: Failure, location: ReportLocation)
-    func handleFatalError(_ failure: Failure, location: ReportLocation?) -> Never
+    func handleFailure(_ failure: AssertionFailure, location: ReportLocation)
+    func handleFatalError(_ failure: AssertionFailure, location: ReportLocation?) -> Never
 }

@@ -4,11 +4,11 @@ final class TestableReporter: FailureReportHandler {
 
     var passedFailureMessage: String?
 
-    func handleFailure(_ failure: Failure, location: ReportLocation) {
+    func handleFailure(_ failure: AssertionFailure, location: ReportLocation) {
         passedFailureMessage = failure.message
     }
 
-    func handleFatalError(_ failure: Failure, location: ReportLocation?) -> Never {
+    func handleFatalError(_ failure: AssertionFailure, location: ReportLocation?) -> Never {
         fatalError(failure.message)
     }
 }

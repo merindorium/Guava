@@ -1,4 +1,4 @@
-extension Result where Failure == Guava.Failure {
+extension Result where Failure == AssertionFailure {
 
     /// Sends report to `FailureReporter` if result is `failure`.
     /// - Parameters:
