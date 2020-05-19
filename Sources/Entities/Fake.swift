@@ -11,7 +11,9 @@ final class Fake<Value> {
 extension Fake: Invokable {
 
     func invoke(arguments: [Any]) -> Value {
-        let arguments = arguments.map { Argument(value: $0) }
+        let arguments = arguments
+            .enumerated()
+            .map { Argument(value: $0.element, position: .init($0.offset)) }
         return closure(arguments)
     }
 }

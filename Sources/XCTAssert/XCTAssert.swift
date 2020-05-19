@@ -58,9 +58,7 @@ public func XCTAssertCalled<Out, A>(_ spy: Spy<Out>,
                                     file: StaticString = #file,
                                     line: UInt = #line) where A: Equatable {
     XCTAssertCalled(spy, file: file, line: line)
-    guard let callArguments = spy.calls.last?.arguments,
-        callArguments.assertSize(of: 1, file: file, line: line),
-        callArguments[0].assertEqual(argument, position: .first, file: file, line: line) else { return }
+    spy.calls.last?.assertCalled(with: argument).reportFailure(file: file, line: line)
 }
 
 /// Asserts that spy was called with two arguments.
@@ -75,10 +73,7 @@ public func XCTAssertCalled<Out, A, B>(_ spy: Spy<Out>,
                                        line: UInt = #line)
     where A: Equatable, B: Equatable {
         XCTAssertCalled(spy, file: file, line: line)
-        guard let callArguments = spy.calls.last?.arguments,
-            callArguments.assertSize(of: 2, file: file, line: line),
-            callArguments[0].assertEqual(arguments.0, position: .first, file: file, line: line),
-            callArguments[1].assertEqual(arguments.1, position: .second, file: file, line: line) else { return }
+        spy.calls.last?.assertCalled(with: arguments).reportFailure(file: file, line: line)
 }
 
 /// Asserts that spy was called with three arguments.
@@ -93,11 +88,7 @@ public func XCTAssertCalled<Out, A, B, C>(_ spy: Spy<Out>,
                                           line: UInt = #line)
     where A: Equatable, B: Equatable, C: Equatable {
         XCTAssertCalled(spy, file: file, line: line)
-        guard let callArguments = spy.calls.last?.arguments,
-            callArguments.assertSize(of: 3, file: file, line: line),
-            callArguments[0].assertEqual(arguments.0, position: .first, file: file, line: line),
-            callArguments[1].assertEqual(arguments.1, position: .second, file: file, line: line),
-            callArguments[2].assertEqual(arguments.2, position: .third, file: file, line: line) else { return }
+        spy.calls.last?.assertCalled(with: arguments).reportFailure(file: file, line: line)
 }
 
 /// Asserts that spy was called with four arguments.
@@ -112,12 +103,7 @@ public func XCTAssertCalled<Out, A, B, C, D>(_ spy: Spy<Out>,
                                              line: UInt = #line)
     where A: Equatable, B: Equatable, C: Equatable, D: Equatable {
         XCTAssertCalled(spy, file: file, line: line)
-        guard let callArguments = spy.calls.last?.arguments,
-            callArguments.assertSize(of: 4, file: file, line: line),
-            callArguments[0].assertEqual(arguments.0, position: .first, file: file, line: line),
-            callArguments[1].assertEqual(arguments.1, position: .second, file: file, line: line),
-            callArguments[2].assertEqual(arguments.2, position: .third, file: file, line: line),
-            callArguments[3].assertEqual(arguments.3, position: .fourth, file: file, line: line) else { return }
+        spy.calls.last?.assertCalled(with: arguments).reportFailure(file: file, line: line)
 }
 
 /// Asserts that spy was called with five arguments.
@@ -132,13 +118,7 @@ public func XCTAssertCalled<Out, A, B, C, D, E>(_ spy: Spy<Out>,
                                                 line: UInt = #line)
     where A: Equatable, B: Equatable, C: Equatable, D: Equatable, E: Equatable {
         XCTAssertCalled(spy, file: file, line: line)
-        guard let callArguments = spy.calls.last?.arguments,
-            callArguments.assertSize(of: 5, file: file, line: line),
-            callArguments[0].assertEqual(arguments.0, position: .first, file: file, line: line),
-            callArguments[1].assertEqual(arguments.1, position: .second, file: file, line: line),
-            callArguments[2].assertEqual(arguments.2, position: .third, file: file, line: line),
-            callArguments[3].assertEqual(arguments.3, position: .fourth, file: file, line: line),
-            callArguments[4].assertEqual(arguments.4, position: .fifth, file: file, line: line) else { return }
+        spy.calls.last?.assertCalled(with: arguments).reportFailure(file: file, line: line)
 }
 
 /// Asserts that spy was called with six arguments.
@@ -153,14 +133,7 @@ public func XCTAssertCalled<Out, A, B, C, D, E, F>(_ spy: Spy<Out>,
                                                    line: UInt = #line)
     where A: Equatable, B: Equatable, C: Equatable, D: Equatable, E: Equatable, F: Equatable {
         XCTAssertCalled(spy, file: file, line: line)
-        guard let callArguments = spy.calls.last?.arguments,
-            callArguments.assertSize(of: 6, file: file, line: line),
-            callArguments[0].assertEqual(arguments.0, position: .first, file: file, line: line),
-            callArguments[1].assertEqual(arguments.1, position: .second, file: file, line: line),
-            callArguments[2].assertEqual(arguments.2, position: .third, file: file, line: line),
-            callArguments[3].assertEqual(arguments.3, position: .fourth, file: file, line: line),
-            callArguments[4].assertEqual(arguments.4, position: .fifth, file: file, line: line),
-            callArguments[5].assertEqual(arguments.5, position: .sixth, file: file, line: line) else { return }
+        spy.calls.last?.assertCalled(with: arguments).reportFailure(file: file, line: line)
 }
 
 /// Asserts that spy was called with seven arguments.
@@ -175,15 +148,7 @@ public func XCTAssertCalled<Out, A, B, C, D, E, F, G>(_ spy: Spy<Out>,
                                                       line: UInt = #line)
     where A: Equatable, B: Equatable, C: Equatable, D: Equatable, E: Equatable, F: Equatable, G: Equatable {
         XCTAssertCalled(spy, file: file, line: line)
-        guard let callArguments = spy.calls.last?.arguments,
-            callArguments.assertSize(of: 7, file: file, line: line),
-            callArguments[0].assertEqual(arguments.0, position: .first, file: file, line: line),
-            callArguments[1].assertEqual(arguments.1, position: .second, file: file, line: line),
-            callArguments[2].assertEqual(arguments.2, position: .third, file: file, line: line),
-            callArguments[3].assertEqual(arguments.3, position: .fourth, file: file, line: line),
-            callArguments[4].assertEqual(arguments.4, position: .fifth, file: file, line: line),
-            callArguments[5].assertEqual(arguments.5, position: .sixth, file: file, line: line),
-            callArguments[6].assertEqual(arguments.6, position: .seventh, file: file, line: line) else { return }
+        spy.calls.last?.assertCalled(with: arguments).reportFailure(file: file, line: line)
 }
 
 /// Asserts that spy was called with eight arguments.
@@ -199,16 +164,7 @@ public func XCTAssertCalled<Out, A, B, C, D, E, F, G, H>(_ spy: Spy<Out>,
     where A: Equatable, B: Equatable, C: Equatable, D: Equatable, E: Equatable, F: Equatable, G: Equatable,
     H: Equatable {
         XCTAssertCalled(spy, file: file, line: line)
-        guard let callArguments = spy.calls.last?.arguments,
-            callArguments.assertSize(of: 8, file: file, line: line),
-            callArguments[0].assertEqual(arguments.0, position: .first, file: file, line: line),
-            callArguments[1].assertEqual(arguments.1, position: .second, file: file, line: line),
-            callArguments[2].assertEqual(arguments.2, position: .third, file: file, line: line),
-            callArguments[3].assertEqual(arguments.3, position: .fourth, file: file, line: line),
-            callArguments[4].assertEqual(arguments.4, position: .fifth, file: file, line: line),
-            callArguments[5].assertEqual(arguments.5, position: .sixth, file: file, line: line),
-            callArguments[6].assertEqual(arguments.6, position: .seventh, file: file, line: line),
-            callArguments[7].assertEqual(arguments.7, position: .eighth, file: file, line: line) else { return }
+        spy.calls.last?.assertCalled(with: arguments).reportFailure(file: file, line: line)
 }
 
 /// Asserts that spy was called with nine arguments.
@@ -224,15 +180,5 @@ public func XCTAssertCalled<Out, A, B, C, D, E, F, G, H, I>(_ spy: Spy<Out>,
     where A: Equatable, B: Equatable, C: Equatable, D: Equatable, E: Equatable, F: Equatable, G: Equatable,
     H: Equatable, I: Equatable {
         XCTAssertCalled(spy, file: file, line: line)
-        guard let callArguments = spy.calls.last?.arguments,
-            callArguments.assertSize(of: 9, file: file, line: line),
-            callArguments[0].assertEqual(arguments.0, position: .first, file: file, line: line),
-            callArguments[1].assertEqual(arguments.1, position: .second, file: file, line: line),
-            callArguments[2].assertEqual(arguments.2, position: .third, file: file, line: line),
-            callArguments[3].assertEqual(arguments.3, position: .fourth, file: file, line: line),
-            callArguments[4].assertEqual(arguments.4, position: .fifth, file: file, line: line),
-            callArguments[5].assertEqual(arguments.5, position: .sixth, file: file, line: line),
-            callArguments[6].assertEqual(arguments.6, position: .seventh, file: file, line: line),
-            callArguments[7].assertEqual(arguments.7, position: .eighth, file: file, line: line),
-            callArguments[8].assertEqual(arguments.8, position: .ninth, file: file, line: line) else { return }
+        spy.calls.last?.assertCalled(with: arguments).reportFailure(file: file, line: line)
 }

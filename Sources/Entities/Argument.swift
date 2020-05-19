@@ -12,6 +12,7 @@ public struct Argument {
         case seventh
         case eighth
         case ninth
+        case unknown
 
         /// Textual representation of argument position.
         public var name: String {
@@ -20,44 +21,19 @@ public struct Argument {
     }
 
     /// Textual representation of stored value type.
-    private var storedType: String {
+    public var storedType: String {
         return "\(Mirror.init(reflecting: value).subjectType)"
     }
 
-    private let value: Any
+    /// Argument value.
+    public let value: Any
 
-    init(value: Any) {
+    /// Argument position in method.
+    public let position: Position
+
+    init(value: Any, position: Position) {
         self.value = value
-    }
-
-    /// Asserts that expected value is equal to stored one.
-    /// - Parameters:
-    ///   - expectedValue: Expected value of type `T`, where `T` is `Equatable`.
-    ///   - position: Position of argument in method.
-    ///   - file: The file in which failure occurred. Defaults to the file name of the test case in which this function was called.
-    ///   - line: The line number on which failure occurred. Defaults to the line number on which this function was called.
-    @discardableResult
-    func assertEqual<T>(_ expectedValue: T,
-                        position: Position,
-                        file: StaticString = #file,
-                        line: UInt = #line) -> Bool where T: Equatable {
-        guard let castedValue = asSafe(T.self) else {
-                FailureReporter.handler.handleFailure(.typeMismatch(expectedType: "\(T.self)",
-                                                                    receivedType: storedType,
-                                                                    argument: position.name),
-                                                      location: ReportLocation(file: file, line: line))
-                return false
-        }
-
-        if castedValue != expectedValue {
-            FailureReporter.handler.handleFailure(.valueMismatch(expectedValue: "\(expectedValue)",
-                                                                receivedValue: "\(castedValue)",
-                                                                argument: position.name),
-                                                  location: ReportLocation(file: file, line: line))
-            return false
-        }
-
-        return true
+        self.position = position
     }
 
     /// Casts stored value to expected `T` type.
@@ -67,17 +43,38 @@ public struct Argument {
     ///   - file: The file in which failure occurred. Defaults to the file name of the test case in which this function was called.
     ///   - line: The line number on which failure occurred. Defaults to the line number on which this function was called.
     func castStrictly<T>(to type: T.Type,
-                         argumentPosition: Position,
                          file: StaticString = #file,
                          line: UInt = #line) -> T {
         guard let castedValue = asSafe(T.self) else {
             FailureReporter.handler.handleFatalError(.typeMismatch(expectedType: "\(T.self)",
-                                                                  receivedType: storedType,
-                                                                  argument: argumentPosition.name),
-                                                    location: ReportLocation(file: file, line: line))
+                                                                   receivedType: storedType,
+                                                                   argument: position.name),
+                                                     location: ReportLocation(file: file, line: line))
         }
 
         return castedValue
+    }
+
+    /// Asserts that expected value is equal to stored one.
+    /// - Parameters:
+    ///   - expectedValue: Expected value of type `T`, where `T` is `Equatable`.
+    ///   - position: Position of argument in method.
+    public func assertEqual<T>(_ expectedValue: T) -> Result<Void, Failure> where T: Equatable {
+        guard let castedValue = asSafe(T.self) else {
+            let typeMismatchFailure: Failure = .typeMismatch(expectedType: "\(T.self)",
+                                                             receivedType: storedType,
+                                                             argument: position.name)
+            return .failure(typeMismatchFailure)
+        }
+
+        if castedValue != expectedValue {
+            let valueMismatchFailure: Failure = .valueMismatch(expectedValue: "\(expectedValue)",
+                                                               receivedValue: "\(castedValue)",
+                                                               argument: position.name)
+            return .failure(valueMismatchFailure)
+        }
+
+        return .success(())
     }
 
     /// Tries to cast stored value to expected `T` type and returns result as `Optional<T>`.
@@ -85,5 +82,35 @@ public struct Argument {
     /// - Returns: Optional result of type casting.
     public func asSafe<T>(_ expectedType: T.Type) -> T? {
         return value as? T
+    }
+}
+
+extension Argument.Position {
+
+    /// Instantiates argument position from given index.
+    /// - Parameter number: Index of argument in array.
+    init(_ number: Int) {
+        switch number {
+        case 0:
+            self = .first
+        case 1:
+            self = .second
+        case 2:
+            self = .third
+        case 3:
+            self = .fourth
+        case 4:
+            self = .fifth
+        case 5:
+            self = .sixth
+        case 6:
+            self = .seventh
+        case 7:
+            self = .eighth
+        case 8:
+            self = .ninth
+        default:
+            self = .unknown
+        }
     }
 }
