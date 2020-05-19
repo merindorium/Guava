@@ -1,4 +1,4 @@
-public enum Failure {
+public enum Failure: Error {
 
     case nilValue
     case argumentsCountMismatch(expectedCount: Int, providedCount: Int)
