@@ -20,6 +20,9 @@ let package = Package(
             path: "Sources"),
         .testTarget(
             name: "GuavaTests",
+            dependencies: ["Guava"]),
+        .testTarget(
+            name: "ExampleTests",
             dependencies: ["Guava"])
     ]
 )
