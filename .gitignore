@@ -67,10 +67,6 @@ fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
 
-# XCode project
-
-*.xcodeproj
-
 # SwiftPM
 
 .swiftpm/
