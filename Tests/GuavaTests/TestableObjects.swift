@@ -26,3 +26,30 @@ class MultiplierTestDouble: Multiplier {
         return multiplyMethod.invoke(arguments: [left, right])
     }
 }
+
+protocol ThrowingMultiplier {
+
+    func multiply(_ lhs: Int, _ rhs: Int) throws -> Int
+}
+
+struct ThrowingCalculator {
+
+    private let multiplier: ThrowingMultiplier
+
+    init(multiplier: ThrowingMultiplier) {
+        self.multiplier = multiplier
+    }
+
+    func multiply(_ lhs: Int, _ rhs: Int) throws -> Int {
+        return try multiplier.multiply(lhs, rhs)
+    }
+}
+
+class ThrowingMultiplierTestDouble: ThrowingMultiplier {
+
+    let multiplyMethod = ThrowingTestDoubleFactory<Int>()
+
+    func multiply(_ lhs: Int, _ rhs: Int) throws -> Int {
+        try multiplyMethod.throwingInvoke(arguments: [lhs, rhs])
+    }
+}
