@@ -22,6 +22,10 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		A7FAD0FE27E4802C00D66306 /* ThrowingTestDoubleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FAD0FA27E4802C00D66306 /* ThrowingTestDoubleFactory.swift */; };
+		A7FAD0FF27E4802C00D66306 /* ThrowingInvokable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FAD0FB27E4802C00D66306 /* ThrowingInvokable.swift */; };
+		A7FAD10327E4807B00D66306 /* NSError+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FAD10127E4804D00D66306 /* NSError+.swift */; };
+		A7FAD10527E4AA1C00D66306 /* Closure.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FAD10427E4AA1C00D66306 /* Closure.swift */; };
 		OBJ_100 /* GuavaReporterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_34 /* GuavaReporterTests.swift */; };
 		OBJ_101 /* GuavaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* GuavaTests.swift */; };
 		OBJ_102 /* TestableObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_36 /* TestableObjects.swift */; };
@@ -84,6 +88,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A7FAD0FA27E4802C00D66306 /* ThrowingTestDoubleFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThrowingTestDoubleFactory.swift; sourceTree = "<group>"; };
+		A7FAD0FB27E4802C00D66306 /* ThrowingInvokable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThrowingInvokable.swift; sourceTree = "<group>"; };
+		A7FAD10127E4804D00D66306 /* NSError+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSError+.swift"; sourceTree = "<group>"; };
+		A7FAD10427E4AA1C00D66306 /* Closure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Closure.swift; sourceTree = "<group>"; };
 		"Guava::ExampleTests::Product" /* ExampleTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = ExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Guava::Guava::Product" /* Guava.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Guava.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Guava::GuavaTests::Product" /* GuavaTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = GuavaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -193,6 +201,7 @@
 		OBJ_33 /* GuavaTests */ = {
 			isa = PBXGroup;
 			children = (
+				A7FAD10127E4804D00D66306 /* NSError+.swift */,
 				OBJ_34 /* GuavaReporterTests.swift */,
 				OBJ_35 /* GuavaTests.swift */,
 				OBJ_36 /* TestableObjects.swift */,
@@ -242,6 +251,8 @@
 		OBJ_8 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				A7FAD0FB27E4802C00D66306 /* ThrowingInvokable.swift */,
+				A7FAD0FA27E4802C00D66306 /* ThrowingTestDoubleFactory.swift */,
 				OBJ_9 /* Argument.swift */,
 				OBJ_10 /* Array+Argument.swift */,
 				OBJ_11 /* Fake.swift */,
@@ -251,6 +262,7 @@
 				OBJ_15 /* Spy.swift */,
 				OBJ_16 /* Stub.swift */,
 				OBJ_17 /* TestDoubleFactory.swift */,
+				A7FAD10427E4AA1C00D66306 /* Closure.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -376,7 +388,9 @@
 				OBJ_71 /* MethodCall.swift in Sources */,
 				OBJ_72 /* RecordedMethodCall.swift in Sources */,
 				OBJ_73 /* Spy.swift in Sources */,
+				A7FAD0FE27E4802C00D66306 /* ThrowingTestDoubleFactory.swift in Sources */,
 				OBJ_74 /* Stub.swift in Sources */,
+				A7FAD10527E4AA1C00D66306 /* Closure.swift in Sources */,
 				OBJ_75 /* TestDoubleFactory.swift in Sources */,
 				OBJ_76 /* AssertionFailure.swift in Sources */,
 				OBJ_77 /* DefaultFailureReportHandler.swift in Sources */,
@@ -384,6 +398,7 @@
 				OBJ_79 /* FailureReporter.swift in Sources */,
 				OBJ_80 /* Result+Guava.swift in Sources */,
 				OBJ_81 /* XCTAssert.swift in Sources */,
+				A7FAD0FF27E4802C00D66306 /* ThrowingInvokable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +419,7 @@
 				OBJ_102 /* TestableObjects.swift in Sources */,
 				OBJ_103 /* TestableReporter.swift in Sources */,
 				OBJ_104 /* XCTestManifests.swift in Sources */,
+				A7FAD10327E4807B00D66306 /* NSError+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
