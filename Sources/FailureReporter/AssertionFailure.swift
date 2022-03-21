@@ -8,6 +8,7 @@ public enum AssertionFailure: Error {
     case expectedToNotBeCalled
     case expectedToBeCalledOnce(calledCount: Int)
     case expectedToBeCalledTimes(expectedCount: Int, calledCount: Int)
+    case testDoubleTypeMismatch(expected: String, received: String)
 }
 
 extension AssertionFailure {
@@ -30,6 +31,8 @@ extension AssertionFailure {
             return "Expected to be called once but called \(calledCount) time(s)"
         case .expectedToBeCalledTimes(let expectedCount, let calledCount):
             return "Expected to be called \(expectedCount) time(s) but called \(calledCount) time(s)"
+        case .testDoubleTypeMismatch(let expected, let received):
+            return "Expected closure to be type of \(expected), received \(received)"
         }
     }
 }
