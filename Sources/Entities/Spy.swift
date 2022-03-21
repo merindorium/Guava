@@ -8,6 +8,10 @@ public final class Spy<Value> {
     public init(value: Value) {
         stub = Stub(stubbedValue: value)
     }
+
+    public init(error: Error) {
+        stub = Stub(error: error)
+    }
 }
 
 extension Spy: Invokable {
@@ -16,5 +20,14 @@ extension Spy: Invokable {
         calls.append(RecordedMethodCall(arguments: arguments))
 
         return stub.invoke(arguments: arguments)
+    }
+}
+
+extension Spy: ThrowingInvokable {
+
+    func throwingInvoke(arguments: [Any]) throws -> Value {
+        calls.append(RecordedMethodCall(arguments: arguments))
+
+        return try stub.throwingInvoke(arguments: arguments)
     }
 }
