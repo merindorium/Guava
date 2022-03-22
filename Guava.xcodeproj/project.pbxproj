@@ -22,6 +22,10 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		A75C953F27E9E4C60064101E /* ThrowingAsyncTestDoubleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75C953C27E9E4C60064101E /* ThrowingAsyncTestDoubleFactory.swift */; };
+		A75C954027E9E4C60064101E /* AsyncTestDoubleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75C953D27E9E4C60064101E /* AsyncTestDoubleFactory.swift */; };
+		A75C954127E9E4C60064101E /* ThrowingAsyncInvokable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75C953E27E9E4C60064101E /* ThrowingAsyncInvokable.swift */; };
+		A7EBAC6627E8A80700F4B334 /* AsyncInvokable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EBAC6527E8A80700F4B334 /* AsyncInvokable.swift */; };
 		A7FAD0FE27E4802C00D66306 /* ThrowingTestDoubleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FAD0FA27E4802C00D66306 /* ThrowingTestDoubleFactory.swift */; };
 		A7FAD0FF27E4802C00D66306 /* ThrowingInvokable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FAD0FB27E4802C00D66306 /* ThrowingInvokable.swift */; };
 		A7FAD10327E4807B00D66306 /* NSError+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FAD10127E4804D00D66306 /* NSError+.swift */; };
@@ -88,6 +92,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A75C953C27E9E4C60064101E /* ThrowingAsyncTestDoubleFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThrowingAsyncTestDoubleFactory.swift; sourceTree = "<group>"; };
+		A75C953D27E9E4C60064101E /* AsyncTestDoubleFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncTestDoubleFactory.swift; sourceTree = "<group>"; };
+		A75C953E27E9E4C60064101E /* ThrowingAsyncInvokable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThrowingAsyncInvokable.swift; sourceTree = "<group>"; };
+		A7EBAC6527E8A80700F4B334 /* AsyncInvokable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncInvokable.swift; sourceTree = "<group>"; };
 		A7FAD0FA27E4802C00D66306 /* ThrowingTestDoubleFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThrowingTestDoubleFactory.swift; sourceTree = "<group>"; };
 		A7FAD0FB27E4802C00D66306 /* ThrowingInvokable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThrowingInvokable.swift; sourceTree = "<group>"; };
 		A7FAD10127E4804D00D66306 /* NSError+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSError+.swift"; sourceTree = "<group>"; };
@@ -251,11 +259,15 @@
 		OBJ_8 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				A75C953D27E9E4C60064101E /* AsyncTestDoubleFactory.swift */,
+				A75C953E27E9E4C60064101E /* ThrowingAsyncInvokable.swift */,
+				A75C953C27E9E4C60064101E /* ThrowingAsyncTestDoubleFactory.swift */,
 				A7FAD0FB27E4802C00D66306 /* ThrowingInvokable.swift */,
 				A7FAD0FA27E4802C00D66306 /* ThrowingTestDoubleFactory.swift */,
 				OBJ_9 /* Argument.swift */,
 				OBJ_10 /* Array+Argument.swift */,
 				OBJ_11 /* Fake.swift */,
+				A7EBAC6527E8A80700F4B334 /* AsyncInvokable.swift */,
 				OBJ_12 /* Invokable.swift */,
 				OBJ_13 /* MethodCall.swift */,
 				OBJ_14 /* RecordedMethodCall.swift */,
@@ -385,6 +397,7 @@
 				OBJ_68 /* Array+Argument.swift in Sources */,
 				OBJ_69 /* Fake.swift in Sources */,
 				OBJ_70 /* Invokable.swift in Sources */,
+				A75C954127E9E4C60064101E /* ThrowingAsyncInvokable.swift in Sources */,
 				OBJ_71 /* MethodCall.swift in Sources */,
 				OBJ_72 /* RecordedMethodCall.swift in Sources */,
 				OBJ_73 /* Spy.swift in Sources */,
@@ -394,10 +407,13 @@
 				OBJ_75 /* TestDoubleFactory.swift in Sources */,
 				OBJ_76 /* AssertionFailure.swift in Sources */,
 				OBJ_77 /* DefaultFailureReportHandler.swift in Sources */,
+				A7EBAC6627E8A80700F4B334 /* AsyncInvokable.swift in Sources */,
 				OBJ_78 /* FailureReportHandler.swift in Sources */,
 				OBJ_79 /* FailureReporter.swift in Sources */,
 				OBJ_80 /* Result+Guava.swift in Sources */,
 				OBJ_81 /* XCTAssert.swift in Sources */,
+				A75C954027E9E4C60064101E /* AsyncTestDoubleFactory.swift in Sources */,
+				A75C953F27E9E4C60064101E /* ThrowingAsyncTestDoubleFactory.swift in Sources */,
 				A7FAD0FF27E4802C00D66306 /* ThrowingInvokable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
