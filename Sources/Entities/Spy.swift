@@ -41,3 +41,13 @@ extension Spy: AsyncInvokable {
         return await stub.asyncInvoke(arguments: arguments)
     }
 }
+
+@available(iOS 13, macOS 10.15, *)
+extension Spy: ThrowingAsyncInvokable {
+
+    func throwingAsyncInvoke(arguments: [Any]) async throws -> Value {
+        calls.append(RecordedMethodCall(arguments: arguments))
+
+        return try await stub.throwingAsyncInvoke(arguments: arguments)
+    }
+}
