@@ -5,12 +5,12 @@ public final class Spy<Value> {
 
     private var stub: Stub<Value>
 
-    public init(value: Value) {
-        stub = Stub(stubbedValue: value)
+    public init(value: Value, delayInNanoseconds: UInt64 = .zero) {
+        stub = Stub(stubbedValue: value, delayInNanoseconds: delayInNanoseconds)
     }
 
-    public init(error: Error) {
-        stub = Stub(error: error)
+    public init(error: Error, delayInNanoseconds: UInt64 = .zero) {
+        stub = Stub(error: error, delayInNanoseconds: delayInNanoseconds)
     }
 }
 
@@ -29,5 +29,15 @@ extension Spy: ThrowingInvokable {
         calls.append(RecordedMethodCall(arguments: arguments))
 
         return try stub.throwingInvoke(arguments: arguments)
+    }
+}
+
+@available(iOS 13, macOS 10.15, *)
+extension Spy: AsyncInvokable {
+
+    func asyncInvoke(arguments: [Any]) async -> Value {
+        calls.append(RecordedMethodCall(arguments: arguments))
+
+        return await stub.asyncInvoke(arguments: arguments)
     }
 }
