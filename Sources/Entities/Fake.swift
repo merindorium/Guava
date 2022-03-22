@@ -10,6 +10,11 @@ final class Fake<Value> {
     init(_ fakeThrowingClosure: @escaping ([Argument]) throws -> Value) {
         closure = .throwing(fakeThrowingClosure)
     }
+
+    @available(iOS 13, macOS 10.15, *)
+    init(_ fakeAsyncClosure: @escaping ([Argument]) async -> Value) {
+        closure = .async(fakeAsyncClosure)
+    }
 }
 
 extension Fake: Invokable {
@@ -18,7 +23,10 @@ extension Fake: Invokable {
         guard case .normal(let closure) = closure else {
             FailureReporter
                 .handler
-                .handleFatalError(.testDoubleTypeMismatch(expected: "Normal", received: "Throwing"), location: nil)
+                .handleFatalError(
+                    .testDoubleTypeMismatch(expected: "Normal", received: closure.description),
+                    location: nil
+                )
         }
         let arguments = arguments
             .enumerated()
@@ -33,11 +41,34 @@ extension Fake: ThrowingInvokable {
         guard case .throwing(let closure) = closure else {
             FailureReporter
                 .handler
-                .handleFatalError(.testDoubleTypeMismatch(expected: "Throwing", received: "Normal"), location: nil)
+                .handleFatalError(
+                    .testDoubleTypeMismatch(expected: "Throwing", received: closure.description),
+                    location: nil
+                )
         }
         let arguments = arguments
             .enumerated()
             .map { Argument(value: $0.element, position: .init($0.offset)) }
         return try closure(arguments)
+    }
+}
+
+@available(iOS 13, macOS 10.15, *)
+extension Fake: AsyncInvokable {
+
+    func asyncInvoke(arguments: [Any]) async -> Value {
+        guard case .async(let closure) = closure else {
+            FailureReporter
+                .handler
+                .handleFatalError(
+                    .testDoubleTypeMismatch(expected: "Async", received: closure.description),
+                    location: nil
+                )
+        }
+
+        let arguments = arguments
+            .enumerated()
+            .map { Argument(value: $0.element, position: .init($0.offset)) }
+        return await closure(arguments)
     }
 }
