@@ -208,4 +208,128 @@ final class GuavaTests: XCTestCase {
         let result = await calculator.multiply(3, 3)
         XCTAssertEqual(result, 6)
     }
+
+    @available(iOS 13, macOS 10.15, *)
+    func testMethodThrowingAsyncStubCalls() async throws {
+        let multiplierTestDouble = ThrowingAsyncMultiplierTestDouble()
+        let calculator = ThrowingAsyncCalculator(multiplier: multiplierTestDouble)
+
+        multiplierTestDouble.multiplyMethod.stub(5, delayInNanoseconds: 100_000_000)
+
+        let result = try await calculator.multiply(3, 3)
+        XCTAssertEqual(result, 5)
+    }
+
+    @available(iOS 13, macOS 10.15, *)
+    func testMethodThrowingAsyncStubThrows() async {
+        let multiplierTestDouble = ThrowingAsyncMultiplierTestDouble()
+        let calculator = ThrowingAsyncCalculator(multiplier: multiplierTestDouble)
+
+        multiplierTestDouble.multiplyMethod.stub(NSError.testableError, delayInNanoseconds: 100_000_000)
+
+        do {
+            _ = try await calculator.multiply(3, 3)
+            XCTFail("Method expected to throw")
+        } catch {
+            XCTAssertThrowsError(try {
+                throw error
+            }())
+        }
+    }
+
+    @available(iOS 13, macOS 10.15, *)
+    func testThrowingAsyncSpyCalled() async throws {
+        let multiplierTestDouble = ThrowingAsyncMultiplierTestDouble()
+        let calculator = ThrowingAsyncCalculator(multiplier: multiplierTestDouble)
+
+        let spy = multiplierTestDouble.multiplyMethod.spy(10, delayInNanoseconds: 100_000_000)
+
+        let result = try await calculator.multiply(3, 3)
+        XCTAssertEqual(result, 10)
+        XCTAssertCalledOnce(spy)
+    }
+
+    @available(iOS 13, macOS 10.15, *)
+    func testThrowingAsyncSpyNotCalled() {
+        let multiplierTestDouble = ThrowingAsyncMultiplierTestDouble()
+        _ = ThrowingAsyncCalculator(multiplier: multiplierTestDouble)
+
+        let spy = multiplierTestDouble.multiplyMethod.spy(10)
+
+        XCTAssertNotCalled(spy)
+    }
+
+    @available(iOS 13, macOS 10.15, *)
+    func testThrowingAsyncSpyThrows() async {
+        let multiplierTestDouble = ThrowingAsyncMultiplierTestDouble()
+        let calculator = ThrowingAsyncCalculator(multiplier: multiplierTestDouble)
+
+        let spy = multiplierTestDouble.multiplyMethod.spy(NSError.testableError, delayInNanoseconds: 100_000_000)
+
+        do {
+            _ = try await calculator.multiply(3, 3)
+            XCTFail("Expected method to throw")
+        } catch {
+            XCTAssertThrowsError(try {
+                throw error
+            }())
+        }
+        XCTAssertCalledOnce(spy)
+    }
+
+    @available(iOS 13, macOS 10.15, *)
+    func testThrowingAsyncSpyCalledWithArguments() async throws {
+        let multiplierTestDouble = ThrowingAsyncMultiplierTestDouble()
+        let calculator = ThrowingAsyncCalculator(multiplier: multiplierTestDouble)
+
+        let spy = multiplierTestDouble.multiplyMethod.spy(10, delayInNanoseconds: 100_000_000)
+
+        _ = try await calculator.multiply(3, 3)
+
+        XCTAssertCalled(spy, with: (3, 3))
+    }
+
+    @available(iOS 13, macOS 10.15, *)
+    func testThrowingAsyncFakeCalled() async throws {
+        let multiplierTestDouble = ThrowingAsyncMultiplierTestDouble()
+        let calculator = ThrowingAsyncCalculator(multiplier: multiplierTestDouble)
+
+        multiplierTestDouble.multiplyMethod.fake { args in
+            do {
+                try await Task.sleep(nanoseconds: 100_000_000)
+            } catch {
+                XCTFail("Falied to delay closure")
+            }
+
+            let (left, right) = args.as(Int.self, Int.self)
+
+            return left + right
+        }
+
+        let result = try await calculator.multiply(3, 3)
+        XCTAssertEqual(result, 6)
+    }
+
+    @available(iOS 13, macOS 10.15, *)
+    func testThrowingAsyncFakeThrows() async {
+        let multiplierTestDouble = ThrowingAsyncMultiplierTestDouble()
+        let calculator = ThrowingAsyncCalculator(multiplier: multiplierTestDouble)
+
+        multiplierTestDouble.multiplyMethod.fake { _ in
+            do {
+                try await Task.sleep(nanoseconds: 100_000_000)
+            } catch {
+                XCTFail("Falied to delay closure")
+            }
+            throw NSError.testableError
+        }
+
+        do {
+            _ = try await calculator.multiply(3, 3)
+        } catch {
+            XCTAssertThrowsError(try {
+                throw error
+            }())
+        }
+    }
 }
