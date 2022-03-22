@@ -15,6 +15,11 @@ final class Fake<Value> {
     init(_ fakeAsyncClosure: @escaping ([Argument]) async -> Value) {
         closure = .async(fakeAsyncClosure)
     }
+
+    @available(iOS 13, macOS 10.15, *)
+    init(_ fakeThrowingAsyncClosure: @escaping ([Argument]) async throws -> Value) {
+        closure = .asyncThrowing(fakeThrowingAsyncClosure)
+    }
 }
 
 extension Fake: Invokable {
@@ -70,5 +75,25 @@ extension Fake: AsyncInvokable {
             .enumerated()
             .map { Argument(value: $0.element, position: .init($0.offset)) }
         return await closure(arguments)
+    }
+}
+
+@available(iOS 13, macOS 10.15, *)
+extension Fake: ThrowingAsyncInvokable {
+
+    func throwingAsyncInvoke(arguments: [Any]) async throws -> Value {
+        guard case .asyncThrowing(let closure) = closure else {
+            FailureReporter
+                .handler
+                .handleFatalError(
+                    .testDoubleTypeMismatch(expected: "AsyncThrowing", received: closure.description),
+                    location: nil
+                )
+        }
+
+        let arguments = arguments
+            .enumerated()
+            .map { Argument(value: $0.element, position: .init($0.offset)) }
+        return try await closure(arguments)
     }
 }
