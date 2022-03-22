@@ -3,6 +3,7 @@ enum Closure<Value> {
     case normal(([Argument]) -> Value)
     case throwing(([Argument]) throws -> Value)
     case async(([Argument]) async -> Value)
+    case asyncThrowing(([Argument]) async throws -> Value)
 }
 
 extension Closure: CustomStringConvertible {
@@ -15,6 +16,8 @@ extension Closure: CustomStringConvertible {
             return "Throwing"
         case .async:
             return "Async"
+        case .asyncThrowing:
+            return "AsyncThrowing"
         }
     }
 }
