@@ -58,3 +58,22 @@ extension Stub: AsyncInvokable {
         return result
     }
 }
+
+@available(iOS 13, macOS 10.15, *)
+extension Stub: ThrowingAsyncInvokable {
+
+    func throwingAsyncInvoke(arguments: [Any]) async throws -> Value {
+        do {
+            try await Task.sleep(nanoseconds: delayInNanoseconds)
+        } catch {
+            FailureReporter.handler.handleFatalError(.taskExplicitlyCanceled, location: nil)
+        }
+
+        switch stubbedValue {
+        case .success(let value):
+            return value
+        case .failure(let error):
+            throw error
+        }
+    }
+}
