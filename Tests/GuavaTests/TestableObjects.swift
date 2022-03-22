@@ -53,3 +53,33 @@ class ThrowingMultiplierTestDouble: ThrowingMultiplier {
         try multiplyMethod.throwingInvoke(arguments: [lhs, rhs])
     }
 }
+
+@available(iOS 13, macOS 10.15, *)
+protocol AsyncMultiplier {
+
+    func multiply(_ left: Int, _ right: Int) async -> Int
+}
+
+@available(iOS 13, macOS 10.15, *)
+struct AsyncCalculator {
+
+    private let multiplier: AsyncMultiplier
+
+    init(multiplier: AsyncMultiplier) {
+        self.multiplier = multiplier
+    }
+
+    func multiply(_ left: Int, _ right: Int) async -> Int {
+        return await multiplier.multiply(left, right)
+    }
+}
+
+@available(iOS 13, macOS 10.15, *)
+class AsyncMultiplierTestDouble: AsyncMultiplier {
+
+    var multiplyMethod = AsyncTestDoubleFactory<Int>()
+
+    func multiply(_ left: Int, _ right: Int) async -> Int {
+        return await multiplyMethod.asyncInvoke(arguments: [left, right])
+    }
+}
