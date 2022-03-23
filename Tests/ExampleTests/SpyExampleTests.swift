@@ -93,9 +93,4 @@ final class TemperatureAnalyzerTests: XCTestCase {
         XCTAssertCalledOnce(reportMethod)
         XCTAssertCalled(reportMethod, with: ReportStatus.failure(temp: failureTemperature))
     }
-
-    static var allTests = [
-        ("testSuccessfulTemperatureReport", testSuccessfulTemperatureReport),
-        ("testFailureTemperatureReport", testFailureTemperatureReport)
-    ]
 }

@@ -34,13 +34,11 @@
 		OBJ_101 /* GuavaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* GuavaTests.swift */; };
 		OBJ_102 /* TestableObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_36 /* TestableObjects.swift */; };
 		OBJ_103 /* TestableReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_37 /* TestableReporter.swift */; };
-		OBJ_104 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* XCTestManifests.swift */; };
 		OBJ_106 /* Guava.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Guava::Guava::Product" /* Guava.framework */; };
 		OBJ_54 /* FakeExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* FakeExampleTests.swift */; };
 		OBJ_55 /* SpyExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* SpyExampleTests.swift */; };
 		OBJ_56 /* StubExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* StubExampleTests.swift */; };
 		OBJ_57 /* TestDoubleFactoryExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_31 /* TestDoubleFactoryExample.swift */; };
-		OBJ_58 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_32 /* XCTestManifests.swift */; };
 		OBJ_60 /* Guava.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Guava::Guava::Product" /* Guava.framework */; };
 		OBJ_67 /* Argument.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Argument.swift */; };
 		OBJ_68 /* Array+Argument.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Array+Argument.swift */; };
@@ -121,12 +119,10 @@
 		OBJ_29 /* SpyExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyExampleTests.swift; sourceTree = "<group>"; };
 		OBJ_30 /* StubExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubExampleTests.swift; sourceTree = "<group>"; };
 		OBJ_31 /* TestDoubleFactoryExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDoubleFactoryExample.swift; sourceTree = "<group>"; };
-		OBJ_32 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 		OBJ_34 /* GuavaReporterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuavaReporterTests.swift; sourceTree = "<group>"; };
 		OBJ_35 /* GuavaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuavaTests.swift; sourceTree = "<group>"; };
 		OBJ_36 /* TestableObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestableObjects.swift; sourceTree = "<group>"; };
 		OBJ_37 /* TestableReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestableReporter.swift; sourceTree = "<group>"; };
-		OBJ_38 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 		OBJ_43 /* Documentation */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Documentation; sourceTree = SOURCE_ROOT; };
 		OBJ_44 /* Carthage */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Carthage; sourceTree = SOURCE_ROOT; };
 		OBJ_45 /* script */ = {isa = PBXFileReference; lastKnownFileType = folder; path = script; sourceTree = SOURCE_ROOT; };
@@ -200,7 +196,6 @@
 				OBJ_29 /* SpyExampleTests.swift */,
 				OBJ_30 /* StubExampleTests.swift */,
 				OBJ_31 /* TestDoubleFactoryExample.swift */,
-				OBJ_32 /* XCTestManifests.swift */,
 			);
 			name = ExampleTests;
 			path = Tests/ExampleTests;
@@ -214,7 +209,6 @@
 				OBJ_35 /* GuavaTests.swift */,
 				OBJ_36 /* TestableObjects.swift */,
 				OBJ_37 /* TestableReporter.swift */,
-				OBJ_38 /* XCTestManifests.swift */,
 			);
 			name = GuavaTests;
 			path = Tests/GuavaTests;
@@ -385,7 +379,6 @@
 				OBJ_55 /* SpyExampleTests.swift in Sources */,
 				OBJ_56 /* StubExampleTests.swift in Sources */,
 				OBJ_57 /* TestDoubleFactoryExample.swift in Sources */,
-				OBJ_58 /* XCTestManifests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,7 +427,6 @@
 				OBJ_101 /* GuavaTests.swift in Sources */,
 				OBJ_102 /* TestableObjects.swift in Sources */,
 				OBJ_103 /* TestableReporter.swift in Sources */,
-				OBJ_104 /* XCTestManifests.swift in Sources */,
 				A7FAD10327E4807B00D66306 /* NSError+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

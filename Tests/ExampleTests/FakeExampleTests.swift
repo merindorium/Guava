@@ -80,8 +80,4 @@ final class MovieManagerTests: XCTestCase {
         // Assert
         XCTAssertEqual(fetchedRatings, expectedRating)
     }
-
-    static var allTests = [
-        ("testMoviesFetchedSuccessfully", testMoviesFetchedSuccessfully)
-    ]
 }

@@ -48,8 +48,4 @@ final class TipCalculatorTests: XCTestCase {
         // Assert
         XCTAssertEqual(tipsSum, expectedTipsSum)
     }
-
-    static var allTests = [
-        ("testAllTipsAreSummedCorrectly", testAllTipsAreSummedCorrectly)
-    ]
 }
