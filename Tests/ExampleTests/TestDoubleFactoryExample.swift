@@ -36,8 +36,4 @@ final class CalculatorTestCase: XCTestCase {
         let result = calculatorTestDouble.multiply(3, 3)
         XCTAssertEqual(result, stubValue)
     }
-
-    static var allTests = [
-        ("testMultiply", testMultiply)
-    ]
 }

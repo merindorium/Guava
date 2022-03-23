@@ -113,14 +113,4 @@ final class GuavaReporterTests: XCTestCase {
         XCTAssertEqual(testableReporter.passedFailureMessage,
                        "Expected to be called 2 time(s) but called 3 time(s)")
     }
-
-    static var allTests = [
-        ("testReporterSendValueMismatchFailure", testReporterSendValueMismatchFailure),
-        ("testReporterSendTypeMismatchFailure", testReporterSendTypeMismatchFailure),
-        ("testReporterSendArgumentsCountMismatchFailure", testReporterSendArgumentsCountMismatchFailure),
-        ("testReporterSendExpectedToBeCalledFailure", testReporterSendExpectedToBeCalledFailure),
-        ("testReporterSendExpectedToNotBeCalledFailure", testReporterSendExpectedToNotBeCalledFailure),
-        ("testReporterSendExpectedToBeCalledOnceFailure", testReporterSendExpectedToBeCalledOnceFailure),
-        ("testReporterSendExpectedToBeCalledTimesFailure", testReporterSendExpectedToBeCalledTimesFailure)
-    ]
 }
