@@ -1,8 +1,8 @@
 /// A `AsyncTestDoubleFactory` is a factory that allows to swap testable entity with several kinds of throwing doubles.
 @available(iOS 13, macOS 10.15, *)
-public final class AsyncTestDoubleFactory<Value> {
+public actor AsyncTestDoubleFactory<Value> {
 
-    private var invokeClosure: (([Any]) async -> Value)?
+    private var invokeClosure: (@Sendable ([Any]) async -> Value)?
 
     public init() {}
 }
@@ -22,30 +22,30 @@ extension AsyncTestDoubleFactory: AsyncInvokable {
 @available(iOS 13, macOS 10.15, *)
 extension AsyncTestDoubleFactory {
 
-    /// Creates `Stub`.
+    /// Creates `AsyncStub`.
     /// - Parameter value: Stub value.
     /// - Parameter delayInNanoseconds: amount of nanoseconds to wait before returning a result.
     public func stub(_ value: Value, delayInNanoseconds: UInt64 = .zero) {
-        let stub = Stub(stubbedValue: value, delayInNanoseconds: delayInNanoseconds)
+        let stub = AsyncStub(stubbedValue: value, delayInNanoseconds: delayInNanoseconds)
 
         invokeClosure = stub.asyncInvoke(arguments:)
     }
 
-    /// Returns `Spy`.
+    /// Returns `AsyncSpy`.
     /// - Parameter value: Stub value.
     /// - Parameter delayInNanoseconds: amount of nanoseconds to wait before returning a result.
-    public func spy(_ value: Value, delayInNanoseconds: UInt64 = .zero) -> Spy<Value> {
-        let spy = Spy(value: value, delayInNanoseconds: delayInNanoseconds)
+    public func spy(_ value: Value, delayInNanoseconds: UInt64 = .zero) -> AsyncSpy<Value> {
+        let spy = AsyncSpy(value: value, delayInNanoseconds: delayInNanoseconds)
 
         invokeClosure = spy.asyncInvoke(arguments:)
 
         return spy
     }
 
-    /// Creates `Fake`.
+    /// Creates `AsyncFake`.
     /// - Parameter closure: Async closure that will swap actual implementation of entity.
-    public func fake(_ closure: @escaping ([Argument]) async -> Value) {
-        let fake = Fake(closure)
+    public func fake(_ closure: @escaping @Sendable ([Argument]) async -> Value) {
+        let fake = AsyncFake(closure)
         invokeClosure = fake.asyncInvoke(arguments:)
     }
 }
