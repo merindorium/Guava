@@ -29,6 +29,11 @@
 		A75C954527EB13060064101E /* ThrowingTestDoulbeFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75C954427EB13060064101E /* ThrowingTestDoulbeFactoryTests.swift */; };
 		A75C954727EB130F0064101E /* AsyncTestDoubleFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75C954627EB130F0064101E /* AsyncTestDoubleFactoryTests.swift */; };
 		A75C954927EB13190064101E /* ThrowingAsyncTestDoubleFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75C954827EB13190064101E /* ThrowingAsyncTestDoubleFactoryTests.swift */; };
+		A7DD61B7283BA7BF0024D8C8 /* AsyncClosure.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DD61B6283BA7BF0024D8C8 /* AsyncClosure.swift */; };
+		A7E3607A27F1D2A0009992AE /* AsyncStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E3607927F1D2A0009992AE /* AsyncStub.swift */; };
+		A7E3607C27F1D2A4009992AE /* AsyncSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E3607B27F1D2A4009992AE /* AsyncSpy.swift */; };
+		A7E3607E27F1D2AA009992AE /* AsyncFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E3607D27F1D2AA009992AE /* AsyncFake.swift */; };
+		A7E3608127F1F015009992AE /* Result+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E3608027F1F015009992AE /* Result+.swift */; };
 		A7EBAC6627E8A80700F4B334 /* AsyncInvokable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EBAC6527E8A80700F4B334 /* AsyncInvokable.swift */; };
 		A7FAD0FE27E4802C00D66306 /* ThrowingTestDoubleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FAD0FA27E4802C00D66306 /* ThrowingTestDoubleFactory.swift */; };
 		A7FAD0FF27E4802C00D66306 /* ThrowingInvokable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FAD0FB27E4802C00D66306 /* ThrowingInvokable.swift */; };
@@ -100,6 +105,11 @@
 		A75C954427EB13060064101E /* ThrowingTestDoulbeFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThrowingTestDoulbeFactoryTests.swift; sourceTree = "<group>"; };
 		A75C954627EB130F0064101E /* AsyncTestDoubleFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncTestDoubleFactoryTests.swift; sourceTree = "<group>"; };
 		A75C954827EB13190064101E /* ThrowingAsyncTestDoubleFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThrowingAsyncTestDoubleFactoryTests.swift; sourceTree = "<group>"; };
+		A7DD61B6283BA7BF0024D8C8 /* AsyncClosure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncClosure.swift; sourceTree = "<group>"; };
+		A7E3607927F1D2A0009992AE /* AsyncStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncStub.swift; sourceTree = "<group>"; };
+		A7E3607B27F1D2A4009992AE /* AsyncSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncSpy.swift; sourceTree = "<group>"; };
+		A7E3607D27F1D2AA009992AE /* AsyncFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncFake.swift; sourceTree = "<group>"; };
+		A7E3608027F1F015009992AE /* Result+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+.swift"; sourceTree = "<group>"; };
 		A7EBAC6527E8A80700F4B334 /* AsyncInvokable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncInvokable.swift; sourceTree = "<group>"; };
 		A7FAD0FA27E4802C00D66306 /* ThrowingTestDoubleFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThrowingTestDoubleFactory.swift; sourceTree = "<group>"; };
 		A7FAD0FB27E4802C00D66306 /* ThrowingInvokable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThrowingInvokable.swift; sourceTree = "<group>"; };
@@ -166,6 +176,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A7E3607F27F1F008009992AE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A7E3608027F1F015009992AE /* Result+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		OBJ_18 /* FailureReporter */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,6 +270,7 @@
 		OBJ_7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				A7E3607F27F1F008009992AE /* Extensions */,
 				OBJ_8 /* Entities */,
 				OBJ_18 /* FailureReporter */,
 				OBJ_23 /* XCTAssert */,
@@ -262,6 +281,7 @@
 		OBJ_8 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				A7DD61B6283BA7BF0024D8C8 /* AsyncClosure.swift */,
 				A75C953D27E9E4C60064101E /* AsyncTestDoubleFactory.swift */,
 				A75C953E27E9E4C60064101E /* ThrowingAsyncInvokable.swift */,
 				A75C953C27E9E4C60064101E /* ThrowingAsyncTestDoubleFactory.swift */,
@@ -278,6 +298,9 @@
 				OBJ_16 /* Stub.swift */,
 				OBJ_17 /* TestDoubleFactory.swift */,
 				A7FAD10427E4AA1C00D66306 /* Closure.swift */,
+				A7E3607927F1D2A0009992AE /* AsyncStub.swift */,
+				A7E3607B27F1D2A4009992AE /* AsyncSpy.swift */,
+				A7E3607D27F1D2AA009992AE /* AsyncFake.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -398,6 +421,8 @@
 				OBJ_67 /* Argument.swift in Sources */,
 				OBJ_68 /* Array+Argument.swift in Sources */,
 				OBJ_69 /* Fake.swift in Sources */,
+				A7DD61B7283BA7BF0024D8C8 /* AsyncClosure.swift in Sources */,
+				A7E3607C27F1D2A4009992AE /* AsyncSpy.swift in Sources */,
 				OBJ_70 /* Invokable.swift in Sources */,
 				A75C954127E9E4C60064101E /* ThrowingAsyncInvokable.swift in Sources */,
 				OBJ_71 /* MethodCall.swift in Sources */,
@@ -406,6 +431,7 @@
 				A7FAD0FE27E4802C00D66306 /* ThrowingTestDoubleFactory.swift in Sources */,
 				OBJ_74 /* Stub.swift in Sources */,
 				A7FAD10527E4AA1C00D66306 /* Closure.swift in Sources */,
+				A7E3608127F1F015009992AE /* Result+.swift in Sources */,
 				OBJ_75 /* TestDoubleFactory.swift in Sources */,
 				OBJ_76 /* AssertionFailure.swift in Sources */,
 				OBJ_77 /* DefaultFailureReportHandler.swift in Sources */,
@@ -415,8 +441,10 @@
 				OBJ_80 /* Result+Guava.swift in Sources */,
 				OBJ_81 /* XCTAssert.swift in Sources */,
 				A75C954027E9E4C60064101E /* AsyncTestDoubleFactory.swift in Sources */,
+				A7E3607A27F1D2A0009992AE /* AsyncStub.swift in Sources */,
 				A75C953F27E9E4C60064101E /* ThrowingAsyncTestDoubleFactory.swift in Sources */,
 				A7FAD0FF27E4802C00D66306 /* ThrowingInvokable.swift in Sources */,
+				A7E3607E27F1D2AA009992AE /* AsyncFake.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
