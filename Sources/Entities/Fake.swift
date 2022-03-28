@@ -10,16 +10,6 @@ final class Fake<Value> {
     init(_ fakeThrowingClosure: @escaping ([Argument]) throws -> Value) {
         closure = .throwing(fakeThrowingClosure)
     }
-
-    @available(iOS 13, macOS 10.15, *)
-    init(_ fakeAsyncClosure: @escaping ([Argument]) async -> Value) {
-        closure = .async(fakeAsyncClosure)
-    }
-
-    @available(iOS 13, macOS 10.15, *)
-    init(_ fakeThrowingAsyncClosure: @escaping ([Argument]) async throws -> Value) {
-        closure = .asyncThrowing(fakeThrowingAsyncClosure)
-    }
 }
 
 extension Fake: Invokable {
@@ -55,45 +45,5 @@ extension Fake: ThrowingInvokable {
             .enumerated()
             .map { Argument(value: $0.element, position: .init($0.offset)) }
         return try closure(arguments)
-    }
-}
-
-@available(iOS 13, macOS 10.15, *)
-extension Fake: AsyncInvokable {
-
-    func asyncInvoke(arguments: [Any]) async -> Value {
-        guard case .async(let closure) = closure else {
-            FailureReporter
-                .handler
-                .handleFatalError(
-                    .testDoubleTypeMismatch(expected: "Async", received: closure.description),
-                    location: nil
-                )
-        }
-
-        let arguments = arguments
-            .enumerated()
-            .map { Argument(value: $0.element, position: .init($0.offset)) }
-        return await closure(arguments)
-    }
-}
-
-@available(iOS 13, macOS 10.15, *)
-extension Fake: ThrowingAsyncInvokable {
-
-    func throwingAsyncInvoke(arguments: [Any]) async throws -> Value {
-        guard case .asyncThrowing(let closure) = closure else {
-            FailureReporter
-                .handler
-                .handleFatalError(
-                    .testDoubleTypeMismatch(expected: "AsyncThrowing", received: closure.description),
-                    location: nil
-                )
-        }
-
-        let arguments = arguments
-            .enumerated()
-            .map { Argument(value: $0.element, position: .init($0.offset)) }
-        return try await closure(arguments)
     }
 }
