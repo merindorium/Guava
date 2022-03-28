@@ -4,7 +4,8 @@ protocol AsyncInvokable {
 
     associatedtype Output
 
-        /// Mimics actual method.
-        /// - Parameter arguments: Array of passed arguments.
+    /// Mimics actual method.
+    /// - Parameter arguments: Array of passed arguments.
+    @Sendable
     func asyncInvoke(arguments: [Any]) async -> Output
 }
