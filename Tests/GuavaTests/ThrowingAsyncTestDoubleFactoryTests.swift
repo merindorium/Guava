@@ -8,7 +8,7 @@ final class ThrowingAsyncTestDoubleFactoryTests: XCTestCase {
         let multiplierTestDouble = ThrowingAsyncMultiplierTestDouble()
         let calculator = ThrowingAsyncCalculator(multiplier: multiplierTestDouble)
 
-        multiplierTestDouble.multiplyMethod.stub(5, delayInNanoseconds: 100_000_000)
+        await multiplierTestDouble.multiplyMethod.stub(5, delayInNanoseconds: 100_000_000)
 
         let result = try await calculator.multiply(3, 3)
         XCTAssertEqual(result, 5)
@@ -18,7 +18,7 @@ final class ThrowingAsyncTestDoubleFactoryTests: XCTestCase {
         let multiplierTestDouble = ThrowingAsyncMultiplierTestDouble()
         let calculator = ThrowingAsyncCalculator(multiplier: multiplierTestDouble)
 
-        multiplierTestDouble.multiplyMethod.stub(NSError.testableError, delayInNanoseconds: 100_000_000)
+        await multiplierTestDouble.multiplyMethod.stub(NSError.testableError, delayInNanoseconds: 100_000_000)
 
         do {
             _ = try await calculator.multiply(3, 3)
@@ -34,27 +34,27 @@ final class ThrowingAsyncTestDoubleFactoryTests: XCTestCase {
         let multiplierTestDouble = ThrowingAsyncMultiplierTestDouble()
         let calculator = ThrowingAsyncCalculator(multiplier: multiplierTestDouble)
 
-        let spy = multiplierTestDouble.multiplyMethod.spy(10, delayInNanoseconds: 100_000_000)
+        let spy = await multiplierTestDouble.multiplyMethod.spy(10, delayInNanoseconds: 100_000_000)
 
         let result = try await calculator.multiply(3, 3)
         XCTAssertEqual(result, 10)
-        XCTAssertCalledOnce(spy)
+        await XCTAssertCalledOnce(spy)
     }
 
-    func testThrowingAsyncSpyNotCalled() {
+    func testThrowingAsyncSpyNotCalled() async {
         let multiplierTestDouble = ThrowingAsyncMultiplierTestDouble()
         _ = ThrowingAsyncCalculator(multiplier: multiplierTestDouble)
 
-        let spy = multiplierTestDouble.multiplyMethod.spy(10)
+        let spy = await multiplierTestDouble.multiplyMethod.spy(10)
 
-        XCTAssertNotCalled(spy)
+        await XCTAssertNotCalled(spy)
     }
 
     func testThrowingAsyncSpyThrows() async {
         let multiplierTestDouble = ThrowingAsyncMultiplierTestDouble()
         let calculator = ThrowingAsyncCalculator(multiplier: multiplierTestDouble)
 
-        let spy = multiplierTestDouble.multiplyMethod.spy(NSError.testableError, delayInNanoseconds: 100_000_000)
+        let spy = await multiplierTestDouble.multiplyMethod.spy(NSError.testableError, delayInNanoseconds: 100_000_000)
 
         do {
             _ = try await calculator.multiply(3, 3)
@@ -64,25 +64,25 @@ final class ThrowingAsyncTestDoubleFactoryTests: XCTestCase {
                 throw error
             }())
         }
-        XCTAssertCalledOnce(spy)
+        await XCTAssertCalledOnce(spy)
     }
 
     func testThrowingAsyncSpyCalledWithArguments() async throws {
         let multiplierTestDouble = ThrowingAsyncMultiplierTestDouble()
         let calculator = ThrowingAsyncCalculator(multiplier: multiplierTestDouble)
 
-        let spy = multiplierTestDouble.multiplyMethod.spy(10, delayInNanoseconds: 100_000_000)
+        let spy = await multiplierTestDouble.multiplyMethod.spy(10, delayInNanoseconds: 100_000_000)
 
         _ = try await calculator.multiply(3, 3)
 
-        XCTAssertCalled(spy, with: (3, 3))
+        await XCTAssertCalled(spy, with: (3, 3))
     }
 
     func testThrowingAsyncFakeCalled() async throws {
         let multiplierTestDouble = ThrowingAsyncMultiplierTestDouble()
         let calculator = ThrowingAsyncCalculator(multiplier: multiplierTestDouble)
 
-        multiplierTestDouble.multiplyMethod.fake { args in
+        await multiplierTestDouble.multiplyMethod.fake { args in
             do {
                 try await Task.sleep(nanoseconds: 100_000_000)
             } catch {
@@ -102,7 +102,7 @@ final class ThrowingAsyncTestDoubleFactoryTests: XCTestCase {
         let multiplierTestDouble = ThrowingAsyncMultiplierTestDouble()
         let calculator = ThrowingAsyncCalculator(multiplier: multiplierTestDouble)
 
-        multiplierTestDouble.multiplyMethod.fake { _ in
+        await multiplierTestDouble.multiplyMethod.fake { _ in
             do {
                 try await Task.sleep(nanoseconds: 100_000_000)
             } catch {
