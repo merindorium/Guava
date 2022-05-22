@@ -26,7 +26,7 @@ extension AsyncTestDoubleFactory {
     /// - Parameter value: Stub value.
     /// - Parameter delayInNanoseconds: amount of nanoseconds to wait before returning a result.
     public func stub(_ value: Value, delayInNanoseconds: UInt64 = .zero) {
-        let stub = Stub(stubbedValue: value, delayInNanoseconds: delayInNanoseconds)
+        let stub = Stub<Value, Never>(stubbedValue: value, delayInNanoseconds: delayInNanoseconds)
 
         invokeClosure = stub.asyncInvoke(arguments:)
     }
@@ -34,8 +34,8 @@ extension AsyncTestDoubleFactory {
     /// Returns `Spy`.
     /// - Parameter value: Stub value.
     /// - Parameter delayInNanoseconds: amount of nanoseconds to wait before returning a result.
-    public func spy(_ value: Value, delayInNanoseconds: UInt64 = .zero) -> Spy<Value> {
-        let spy = Spy(value: value, delayInNanoseconds: delayInNanoseconds)
+    public func spy(_ value: Value, delayInNanoseconds: UInt64 = .zero) -> Spy<Value, Never> {
+        let spy = Spy<Value, Never>(value: value, delayInNanoseconds: delayInNanoseconds)
 
         invokeClosure = spy.asyncInvoke(arguments:)
 

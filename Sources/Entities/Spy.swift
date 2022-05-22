@@ -1,15 +1,15 @@
 /// A `Spy` is a `Stub` that also records information about call.
-public final class Spy<Value> {
+public final class Spy<Value, Failure: Error> {
 
     public private(set) var calls = [RecordedMethodCall]()
 
-    private var stub: Stub<Value>
+    private var stub: Stub<Value, Failure>
 
     public init(value: Value, delayInNanoseconds: UInt64 = .zero) {
         stub = Stub(stubbedValue: value, delayInNanoseconds: delayInNanoseconds)
     }
 
-    public init(error: Error, delayInNanoseconds: UInt64 = .zero) {
+    public init(error: Failure, delayInNanoseconds: UInt64 = .zero) {
         stub = Stub(error: error, delayInNanoseconds: delayInNanoseconds)
     }
 }

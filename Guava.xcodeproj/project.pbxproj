@@ -22,11 +22,18 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		1E031999283A81D100F2DDFF /* InvokablePublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E031998283A81D100F2DDFF /* InvokablePublisher.swift */; };
+		1E03199C283A86B600F2DDFF /* TestDoublePublisherFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E03199B283A86B600F2DDFF /* TestDoublePublisherFactory.swift */; };
+		1E03199E283A8DC400F2DDFF /* FakePublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E03199D283A8DC400F2DDFF /* FakePublisher.swift */; };
+		1E0319A0283A8F0E00F2DDFF /* SpyPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E03199F283A8F0E00F2DDFF /* SpyPublisher.swift */; };
+		1E0319A2283A8F1900F2DDFF /* StubPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0319A1283A8F1900F2DDFF /* StubPublisher.swift */; };
+		1E0319A4283A8FBB00F2DDFF /* XCTAssert+Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0319A3283A8FBB00F2DDFF /* XCTAssert+Publisher.swift */; };
+		1E0319A7283A905400F2DDFF /* TestDoublePublisherFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0319A5283A903400F2DDFF /* TestDoublePublisherFactoryTests.swift */; };
 		A75C953F27E9E4C60064101E /* ThrowingAsyncTestDoubleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75C953C27E9E4C60064101E /* ThrowingAsyncTestDoubleFactory.swift */; };
 		A75C954027E9E4C60064101E /* AsyncTestDoubleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75C953D27E9E4C60064101E /* AsyncTestDoubleFactory.swift */; };
 		A75C954127E9E4C60064101E /* ThrowingAsyncInvokable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75C953E27E9E4C60064101E /* ThrowingAsyncInvokable.swift */; };
 		A75C954327EB12FB0064101E /* TestDoubleFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75C954227EB12FB0064101E /* TestDoubleFactoryTests.swift */; };
-		A75C954527EB13060064101E /* ThrowingTestDoulbeFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75C954427EB13060064101E /* ThrowingTestDoulbeFactoryTests.swift */; };
+		A75C954527EB13060064101E /* ThrowingTestDoubleFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75C954427EB13060064101E /* ThrowingTestDoubleFactoryTests.swift */; };
 		A75C954727EB130F0064101E /* AsyncTestDoubleFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75C954627EB130F0064101E /* AsyncTestDoubleFactoryTests.swift */; };
 		A75C954927EB13190064101E /* ThrowingAsyncTestDoubleFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75C954827EB13190064101E /* ThrowingAsyncTestDoubleFactoryTests.swift */; };
 		A7EBAC6627E8A80700F4B334 /* AsyncInvokable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EBAC6527E8A80700F4B334 /* AsyncInvokable.swift */; };
@@ -93,11 +100,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E031998283A81D100F2DDFF /* InvokablePublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvokablePublisher.swift; sourceTree = "<group>"; };
+		1E03199B283A86B600F2DDFF /* TestDoublePublisherFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDoublePublisherFactory.swift; sourceTree = "<group>"; };
+		1E03199D283A8DC400F2DDFF /* FakePublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakePublisher.swift; sourceTree = "<group>"; };
+		1E03199F283A8F0E00F2DDFF /* SpyPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyPublisher.swift; sourceTree = "<group>"; };
+		1E0319A1283A8F1900F2DDFF /* StubPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubPublisher.swift; sourceTree = "<group>"; };
+		1E0319A3283A8FBB00F2DDFF /* XCTAssert+Publisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTAssert+Publisher.swift"; sourceTree = "<group>"; };
+		1E0319A5283A903400F2DDFF /* TestDoublePublisherFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDoublePublisherFactoryTests.swift; sourceTree = "<group>"; };
 		A75C953C27E9E4C60064101E /* ThrowingAsyncTestDoubleFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThrowingAsyncTestDoubleFactory.swift; sourceTree = "<group>"; };
 		A75C953D27E9E4C60064101E /* AsyncTestDoubleFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncTestDoubleFactory.swift; sourceTree = "<group>"; };
 		A75C953E27E9E4C60064101E /* ThrowingAsyncInvokable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThrowingAsyncInvokable.swift; sourceTree = "<group>"; };
 		A75C954227EB12FB0064101E /* TestDoubleFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDoubleFactoryTests.swift; sourceTree = "<group>"; };
-		A75C954427EB13060064101E /* ThrowingTestDoulbeFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThrowingTestDoulbeFactoryTests.swift; sourceTree = "<group>"; };
+		A75C954427EB13060064101E /* ThrowingTestDoubleFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThrowingTestDoubleFactoryTests.swift; sourceTree = "<group>"; };
 		A75C954627EB130F0064101E /* AsyncTestDoubleFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncTestDoubleFactoryTests.swift; sourceTree = "<group>"; };
 		A75C954827EB13190064101E /* ThrowingAsyncTestDoubleFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThrowingAsyncTestDoubleFactoryTests.swift; sourceTree = "<group>"; };
 		A7EBAC6527E8A80700F4B334 /* AsyncInvokable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncInvokable.swift; sourceTree = "<group>"; };
@@ -182,6 +196,7 @@
 			children = (
 				OBJ_24 /* Result+Guava.swift */,
 				OBJ_25 /* XCTAssert.swift */,
+				1E0319A3283A8FBB00F2DDFF /* XCTAssert+Publisher.swift */,
 			);
 			path = XCTAssert;
 			sourceTree = "<group>";
@@ -215,9 +230,10 @@
 				OBJ_36 /* TestableObjects.swift */,
 				OBJ_37 /* TestableReporter.swift */,
 				A75C954227EB12FB0064101E /* TestDoubleFactoryTests.swift */,
-				A75C954427EB13060064101E /* ThrowingTestDoulbeFactoryTests.swift */,
+				A75C954427EB13060064101E /* ThrowingTestDoubleFactoryTests.swift */,
 				A75C954627EB130F0064101E /* AsyncTestDoubleFactoryTests.swift */,
 				A75C954827EB13190064101E /* ThrowingAsyncTestDoubleFactoryTests.swift */,
+				1E0319A5283A903400F2DDFF /* TestDoublePublisherFactoryTests.swift */,
 			);
 			name = GuavaTests;
 			path = Tests/GuavaTests;
@@ -263,20 +279,25 @@
 			isa = PBXGroup;
 			children = (
 				A75C953D27E9E4C60064101E /* AsyncTestDoubleFactory.swift */,
-				A75C953E27E9E4C60064101E /* ThrowingAsyncInvokable.swift */,
 				A75C953C27E9E4C60064101E /* ThrowingAsyncTestDoubleFactory.swift */,
-				A7FAD0FB27E4802C00D66306 /* ThrowingInvokable.swift */,
 				A7FAD0FA27E4802C00D66306 /* ThrowingTestDoubleFactory.swift */,
+				1E03199B283A86B600F2DDFF /* TestDoublePublisherFactory.swift */,
+				OBJ_17 /* TestDoubleFactory.swift */,
+				A75C953E27E9E4C60064101E /* ThrowingAsyncInvokable.swift */,
+				A7FAD0FB27E4802C00D66306 /* ThrowingInvokable.swift */,
+				A7EBAC6527E8A80700F4B334 /* AsyncInvokable.swift */,
+				OBJ_12 /* Invokable.swift */,
+				1E031998283A81D100F2DDFF /* InvokablePublisher.swift */,
 				OBJ_9 /* Argument.swift */,
 				OBJ_10 /* Array+Argument.swift */,
 				OBJ_11 /* Fake.swift */,
-				A7EBAC6527E8A80700F4B334 /* AsyncInvokable.swift */,
-				OBJ_12 /* Invokable.swift */,
+				1E03199D283A8DC400F2DDFF /* FakePublisher.swift */,
 				OBJ_13 /* MethodCall.swift */,
 				OBJ_14 /* RecordedMethodCall.swift */,
 				OBJ_15 /* Spy.swift */,
+				1E03199F283A8F0E00F2DDFF /* SpyPublisher.swift */,
 				OBJ_16 /* Stub.swift */,
-				OBJ_17 /* TestDoubleFactory.swift */,
+				1E0319A1283A8F1900F2DDFF /* StubPublisher.swift */,
 				A7FAD10427E4AA1C00D66306 /* Closure.swift */,
 			);
 			path = Entities;
@@ -397,10 +418,13 @@
 			files = (
 				OBJ_67 /* Argument.swift in Sources */,
 				OBJ_68 /* Array+Argument.swift in Sources */,
+				1E03199E283A8DC400F2DDFF /* FakePublisher.swift in Sources */,
 				OBJ_69 /* Fake.swift in Sources */,
 				OBJ_70 /* Invokable.swift in Sources */,
 				A75C954127E9E4C60064101E /* ThrowingAsyncInvokable.swift in Sources */,
+				1E031999283A81D100F2DDFF /* InvokablePublisher.swift in Sources */,
 				OBJ_71 /* MethodCall.swift in Sources */,
+				1E0319A2283A8F1900F2DDFF /* StubPublisher.swift in Sources */,
 				OBJ_72 /* RecordedMethodCall.swift in Sources */,
 				OBJ_73 /* Spy.swift in Sources */,
 				A7FAD0FE27E4802C00D66306 /* ThrowingTestDoubleFactory.swift in Sources */,
@@ -410,9 +434,12 @@
 				OBJ_76 /* AssertionFailure.swift in Sources */,
 				OBJ_77 /* DefaultFailureReportHandler.swift in Sources */,
 				A7EBAC6627E8A80700F4B334 /* AsyncInvokable.swift in Sources */,
+				1E03199C283A86B600F2DDFF /* TestDoublePublisherFactory.swift in Sources */,
 				OBJ_78 /* FailureReportHandler.swift in Sources */,
 				OBJ_79 /* FailureReporter.swift in Sources */,
 				OBJ_80 /* Result+Guava.swift in Sources */,
+				1E0319A4283A8FBB00F2DDFF /* XCTAssert+Publisher.swift in Sources */,
+				1E0319A0283A8F0E00F2DDFF /* SpyPublisher.swift in Sources */,
 				OBJ_81 /* XCTAssert.swift in Sources */,
 				A75C954027E9E4C60064101E /* AsyncTestDoubleFactory.swift in Sources */,
 				A75C953F27E9E4C60064101E /* ThrowingAsyncTestDoubleFactory.swift in Sources */,
@@ -434,8 +461,9 @@
 			files = (
 				A75C954727EB130F0064101E /* AsyncTestDoubleFactoryTests.swift in Sources */,
 				OBJ_100 /* GuavaReporterTests.swift in Sources */,
+				1E0319A7283A905400F2DDFF /* TestDoublePublisherFactoryTests.swift in Sources */,
 				A75C954327EB12FB0064101E /* TestDoubleFactoryTests.swift in Sources */,
-				A75C954527EB13060064101E /* ThrowingTestDoulbeFactoryTests.swift in Sources */,
+				A75C954527EB13060064101E /* ThrowingTestDoubleFactoryTests.swift in Sources */,
 				OBJ_102 /* TestableObjects.swift in Sources */,
 				A75C954927EB13190064101E /* ThrowingAsyncTestDoubleFactoryTests.swift in Sources */,
 				OBJ_103 /* TestableReporter.swift in Sources */,

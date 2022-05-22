@@ -1,7 +1,7 @@
 /// A `Stub` provides hardcoded answers to calls made during the test.
-final class Stub<Value> {
+final class Stub<Value, Failure: Error> {
 
-    private let stubbedValue: Result<Value, Error>
+    private let stubbedValue: Result<Value, Failure>
     private let delayInNanoseconds: UInt64
 
     init(stubbedValue: Value, delayInNanoseconds: UInt64 = .zero) {
@@ -9,7 +9,7 @@ final class Stub<Value> {
         self.delayInNanoseconds = delayInNanoseconds
     }
 
-    init(error: Error, delayInNanoseconds: UInt64 = .zero) {
+    init(error: Failure, delayInNanoseconds: UInt64 = .zero) {
         stubbedValue = .failure(error)
         self.delayInNanoseconds = delayInNanoseconds
     }
@@ -74,6 +74,22 @@ extension Stub: ThrowingAsyncInvokable {
             return value
         case .failure(let error):
             throw error
+        }
+    }
+}
+
+import Combine
+
+@available(iOS 13, macOS 10.15, *)
+extension Stub: InvokablePublisher {
+    typealias Output = Value
+    
+    func invoke(arguments: [Any]) -> AnyPublisher<Value, Failure> {
+        switch stubbedValue {
+        case .success(let value):
+            return Result.Publisher(.success(value)).eraseToAnyPublisher()
+        case .failure(let error):
+            return Result.Publisher(.failure(error)).eraseToAnyPublisher()
         }
     }
 }

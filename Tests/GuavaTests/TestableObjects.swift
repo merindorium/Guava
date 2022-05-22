@@ -113,3 +113,34 @@ class ThrowingAsyncMultiplierTestDouble: ThrowingAsyncMultiplier {
         return try await multiplyMethod.throwingAsyncInvoke(arguments: [left, right])
     }
 }
+
+// --- Publisher
+import Combine
+
+protocol MultiplierPublisher {
+    func multiply(_ left: Int, _ right: Int) -> AnyPublisher<Int, Error>
+}
+
+@available(iOS 13, macOS 10.15, *)
+struct ReactiveCalculator {
+
+    private let multiplier: MultiplierPublisher
+
+    init(multiplier: MultiplierPublisher) {
+        self.multiplier = multiplier
+    }
+
+    func multiply(_ left: Int, _ right: Int) -> AnyPublisher<Int, Error> {
+        multiplier.multiply(left, right)
+    }
+}
+
+@available(iOS 13, macOS 10.15, *)
+class MultiplierTestDoublePublisher: MultiplierPublisher {
+
+    var multiplyMethod = TestDoublePublisherFactory<Int, Error>()
+
+    func multiply(_ left: Int, _ right: Int) -> AnyPublisher<Int, Error> {
+        multiplyMethod.invoke(arguments: [left, right])
+    }
+}

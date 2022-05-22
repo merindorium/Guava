@@ -26,7 +26,7 @@ extension ThrowingAsyncTestDoubleFactory {
     /// - Parameter value: Stub value.
     /// - Parameter delayInNanoseconds: amount of nanoseconds to wait before returning a result.
     public func stub(_ value: Value, delayInNanoseconds: UInt64 = .zero) {
-        let stub = Stub(stubbedValue: value, delayInNanoseconds: delayInNanoseconds)
+        let stub = Stub<Value, Error>(stubbedValue: value, delayInNanoseconds: delayInNanoseconds)
 
         invokeClosure = stub.throwingAsyncInvoke(arguments:)
     }
@@ -35,7 +35,7 @@ extension ThrowingAsyncTestDoubleFactory {
     /// - Parameter error: Stub error to throw.
     /// - Parameter delayInNanoseconds: amount of nanoseconds to wait before returning a result.
     public func stub(_ error: Error, delayInNanoseconds: UInt64 = .zero) {
-        let stub = Stub<Value>(error: error, delayInNanoseconds: delayInNanoseconds)
+        let stub = Stub<Value, Error>(error: error, delayInNanoseconds: delayInNanoseconds)
 
         invokeClosure = stub.throwingAsyncInvoke(arguments:)
     }
@@ -43,8 +43,8 @@ extension ThrowingAsyncTestDoubleFactory {
     /// Returns `Spy`.
     /// - Parameter value: Stub value.
     /// - Parameter delayInNanoseconds: amount of nanoseconds to wait before returning a result.
-    public func spy(_ value: Value, delayInNanoseconds: UInt64 = .zero) -> Spy<Value> {
-        let spy = Spy(value: value, delayInNanoseconds: delayInNanoseconds)
+    public func spy(_ value: Value, delayInNanoseconds: UInt64 = .zero) -> Spy<Value, Error> {
+        let spy = Spy<Value, Error>(value: value, delayInNanoseconds: delayInNanoseconds)
 
         invokeClosure = spy.throwingAsyncInvoke(arguments:)
 
@@ -54,8 +54,8 @@ extension ThrowingAsyncTestDoubleFactory {
     /// Returns `Spy`.
     /// - Parameter error: Stub error to throw.
     /// - Parameter delayInNanoseconds: amount of nanoseconds to wait before returning a result.
-    public func spy(_ error: Error, delayInNanoseconds: UInt64 = .zero) -> Spy<Value> {
-        let spy = Spy<Value>(error: error, delayInNanoseconds: delayInNanoseconds)
+    public func spy(_ error: Error, delayInNanoseconds: UInt64 = .zero) -> Spy<Value, Error> {
+        let spy = Spy<Value, Error>(error: error, delayInNanoseconds: delayInNanoseconds)
 
         invokeClosure = spy.throwingAsyncInvoke(arguments:)
 

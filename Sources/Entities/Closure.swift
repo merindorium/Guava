@@ -1,9 +1,10 @@
+import Combine
 enum Closure<Value> {
 
     case normal(([Argument]) -> Value)
     case throwing(([Argument]) throws -> Value)
     case async(([Argument]) async -> Value)
-    case asyncThrowing(([Argument]) async throws -> Value)
+    case asyncThrowing(([Argument]) async throws -> Value)    
 }
 
 extension Closure: CustomStringConvertible {

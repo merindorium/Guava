@@ -22,15 +22,15 @@ extension TestDoubleFactory {
     /// Creates `Stub`.
     /// - Parameter value: Stub value.
     public func stub(_ value: Value) {
-        let stub = Stub(stubbedValue: value)
+        let stub = Stub<Value, Never>(stubbedValue: value)
 
         invokeClosure = stub.invoke(arguments:)
     }
 
     /// Returns `Spy`.
     /// - Parameter value: Stub value.
-    public func spy(_ value: Value) -> Spy<Value> {
-        let spy = Spy(value: value)
+    public func spy(_ value: Value) -> Spy<Value, Never> {
+        let spy = Spy<Value, Never>(value: value)
 
         invokeClosure = spy.invoke(arguments:)
 

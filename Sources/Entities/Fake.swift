@@ -1,6 +1,5 @@
 /// A `Fake` allows to swap testable entity implementation with stored one.
 final class Fake<Value> {
-
     private let closure: Closure<Value>
 
     init(_ fakeClosure: @escaping ([Argument]) -> Value) {

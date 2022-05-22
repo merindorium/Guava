@@ -22,7 +22,7 @@ extension ThrowingTestDoubleFactory {
     /// Creates `Stub`.
     /// - Parameter value: Stub value.
     public func stub(_ value: Value) {
-        let stub = Stub(stubbedValue: value)
+        let stub = Stub<Value, Error>(stubbedValue: value)
 
         invokeClosure = stub.throwingInvoke(arguments:)
     }
@@ -30,15 +30,15 @@ extension ThrowingTestDoubleFactory {
     /// Creates `Stub`.
     /// - Parameter error: Stub error to throw.
     public func stub(_ error: Error) {
-        let stub = Stub<Value>(error: error)
+        let stub = Stub<Value, Error>(error: error)
 
         invokeClosure = stub.throwingInvoke(arguments:)
     }
 
     /// Returns `Spy`.
     /// - Parameter value: Stub value.
-    public func spy(_ value: Value) -> Spy<Value> {
-        let spy = Spy(value: value)
+    public func spy(_ value: Value) -> Spy<Value, Error> {
+        let spy = Spy<Value, Error>(value: value)
 
         invokeClosure = spy.throwingInvoke(arguments:)
 
@@ -47,8 +47,8 @@ extension ThrowingTestDoubleFactory {
 
     /// Returns `Spy`.
     /// - Parameter error: Stub error to throw.
-    public func spy(_ error: Error) -> Spy<Value> {
-        let spy = Spy<Value>(error: error)
+    public func spy(_ error: Error) -> Spy<Value, Error> {
+        let spy = Spy<Value, Error>(error: error)
 
         invokeClosure = spy.throwingInvoke(arguments:)
 

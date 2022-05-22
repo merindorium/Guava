@@ -1,7 +1,7 @@
 import Guava
 import XCTest
 
-final class ThrowingTestDoulbeFactoryTests: XCTestCase {
+final class ThrowingTestDoubleFactoryTests: XCTestCase {
 
     func testMethodThrowingStubCalls() throws {
         let multiplierTestDouble = ThrowingMultiplierTestDouble()
