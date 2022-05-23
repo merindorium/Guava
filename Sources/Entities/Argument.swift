@@ -61,16 +61,20 @@ public struct Argument {
     ///   - position: Position of argument in method.
     public func assertEqual<T>(_ expectedValue: T) -> Result<Void, AssertionFailure> where T: Equatable {
         guard let castedValue = asSafe(T.self) else {
-            let typeMismatchFailure: AssertionFailure = .typeMismatch(expectedType: "\(T.self)",
-                                                             receivedType: storedType,
-                                                             argument: position.name)
+            let typeMismatchFailure: AssertionFailure = .typeMismatch(
+                expectedType: "\(T.self)",
+                receivedType: storedType,
+                argument: position.name
+            )
             return .failure(typeMismatchFailure)
         }
 
         if castedValue != expectedValue {
-            let valueMismatchFailure: AssertionFailure = .valueMismatch(expectedValue: "\(expectedValue)",
-                                                               receivedValue: "\(castedValue)",
-                                                               argument: position.name)
+            let valueMismatchFailure: AssertionFailure = .valueMismatch(
+                expectedValue: "\(expectedValue)",
+                receivedValue: "\(castedValue)",
+                argument: position.name
+            )
             return .failure(valueMismatchFailure)
         }
 
