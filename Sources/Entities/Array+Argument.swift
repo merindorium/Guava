@@ -5,8 +5,10 @@ extension Array where Element == Argument {
     ///   - expectedSize: Expected arguments array size.
     func assertSize(of expectedSize: Int) -> Result<Void, AssertionFailure> {
         guard count >= expectedSize else {
-            let failure: AssertionFailure = .argumentsCountMismatch(expectedCount: expectedSize,
-                                                           providedCount: count)
+            let failure: AssertionFailure = .argumentsCountMismatch(
+                expectedCount: expectedSize,
+                providedCount: count
+            )
 
             return .failure(failure)
         }
