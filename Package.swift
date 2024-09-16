@@ -1,11 +1,11 @@
-// swift-tools-version:5.0
+// swift-tools-version:5.10
 
 import PackageDescription
 
 let package = Package(
     name: "Guava",
     platforms: [
-        .iOS(.v12), .macOS(.v10_10)
+        .iOS(.v12), .macOS(.v10_13)
     ],
     products: [
         .library(
