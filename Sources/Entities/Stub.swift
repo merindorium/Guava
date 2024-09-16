@@ -1,5 +1,5 @@
 /// A `Stub` provides hardcoded answers to calls made during the test.
-final class Stub<Value> {
+final class Stub<Value>: @unchecked Sendable {
 
     private let stubbedValue: Result<Value, Error>
     private let delayInNanoseconds: UInt64
