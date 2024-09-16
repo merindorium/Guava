@@ -1,5 +1,9 @@
+import Foundation
+
 /// A `TestDoubleFactory` is a factory that allows to swap testable entity with several kinds of doubles.
-public final class TestDoubleFactory<Value> {
+public final class TestDoubleFactory<Value>: @unchecked Sendable {
+
+    private let lock = NSLock()
 
     private var invokeClosure: (([Any]) -> Value)?
 
@@ -9,7 +13,7 @@ public final class TestDoubleFactory<Value> {
 extension TestDoubleFactory: Invokable {
 
     public func invoke(arguments: [Any]) -> Value {
-        guard let closure = invokeClosure else {
+        guard let closure = lock.withLock({ invokeClosure }) else {
             FailureReporter.handler.handleFatalError(.nilValue, location: nil)
         }
 
@@ -24,7 +28,7 @@ extension TestDoubleFactory {
     public func stub(_ value: Value) {
         let stub = Stub(stubbedValue: value)
 
-        invokeClosure = stub.invoke(arguments:)
+        lock.withLock { invokeClosure = stub.invoke(arguments:) }
     }
 
     /// Returns `Spy`.
@@ -32,7 +36,7 @@ extension TestDoubleFactory {
     public func spy(_ value: Value) -> Spy<Value> {
         let spy = Spy(value: value)
 
-        invokeClosure = spy.invoke(arguments:)
+        lock.withLock { invokeClosure = spy.invoke(arguments:) }
 
         return spy
     }
@@ -41,6 +45,6 @@ extension TestDoubleFactory {
     /// - Parameter closure: Closure that will swap actual implementation of entity.
     public func fake(_ closure: @escaping ([Argument]) -> Value) {
         let fake = Fake(closure)
-        invokeClosure = fake.invoke(arguments:)
+        lock.withLock { invokeClosure = fake.invoke(arguments:) }
     }
 }
