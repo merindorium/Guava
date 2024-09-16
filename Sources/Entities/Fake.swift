@@ -1,5 +1,5 @@
 /// A `Fake` allows to swap testable entity implementation with stored one.
-final class Fake<Value> {
+final class Fake<Value>: Sendable {
 
     private let closure: Closure<Value>
 
