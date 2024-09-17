@@ -8,7 +8,6 @@ Guava helps you to make your unit tests more flexible. It allows you to replace 
 ![Swift 5.x](https://img.shields.io/badge/Swift-5.x-orange.svg)
 ![platform](https://img.shields.io/badge/platform-ios%20%7C%20osx%20%7C%20linux-lightgray.svg)
 ![version](https://img.shields.io/github/v/tag/merindorium/guava?label=version)
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 Table of Contents
 =================
@@ -16,9 +15,6 @@ Table of Contents
 - [Usage](#usage)
 - [Documentation](#documentation)
 - [Installation](#installation)
-  - [Carthage](#carthage)
-  - [Swift Package Manager](#swift-package-manager)
-  - [Manual](#manual)
 
 # Features
 
@@ -68,14 +64,6 @@ See [Documentation](Documentation) section.
 
 # Installation
 
-## Carthage
-
-Update your `Cartfile` with:
-
-```
-github "merindorium/Guava"
-```
-
 ## Swift Package Manager
 
 To use `Guava` with SPM update your `Package.swift`.
@@ -92,12 +80,3 @@ let package = Package(
 )
 
 ```
-
-## Manual
-
-> ⚠️ This will install `Carthage` on your system
-
-You could manually build Guava for iOS and MacOS by using:
-
-1. `make release_tooling`
-2. `make carthage_build`
