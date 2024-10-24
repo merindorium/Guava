@@ -17,7 +17,8 @@ let package = Package(
         .target(
             name: "Guava",
             dependencies: [],
-            path: "Sources"),
+            path: "Sources",
+            linkerSettings: [.linkedFramework("XCTest")]),
         .testTarget(
             name: "GuavaTests",
             dependencies: ["Guava"]),
