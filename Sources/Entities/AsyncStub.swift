@@ -27,11 +27,7 @@ extension AsyncStub: AsyncInvokable {
                 .handleFatalError(.testDoubleTypeMismatch(expected: "Async", received: "Throwing"), location: nil)
         }
 
-        do {
-            try await Task.sleep(nanoseconds: delayInNanoseconds)
-        } catch {
-            FailureReporter.handler.handleFatalError(.taskExplicitlyCanceled, location: nil)
-        }
+        try? await Task.sleep(nanoseconds: delayInNanoseconds)
         return result
     }
 }
@@ -41,11 +37,7 @@ extension AsyncStub: ThrowingAsyncInvokable {
 
     @Sendable
     func throwingAsyncInvoke(arguments: [Any]) async throws -> Value {
-        do {
-            try await Task.sleep(nanoseconds: delayInNanoseconds)
-        } catch {
-            FailureReporter.handler.handleFatalError(.taskExplicitlyCanceled, location: nil)
-        }
+        try await Task.sleep(nanoseconds: delayInNanoseconds)
 
         switch stubbedValue {
         case .success(let value):
