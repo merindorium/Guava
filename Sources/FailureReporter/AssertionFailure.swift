@@ -9,7 +9,6 @@ public enum AssertionFailure: Error {
     case expectedToBeCalledOnce(calledCount: Int)
     case expectedToBeCalledTimes(expectedCount: Int, calledCount: Int)
     case testDoubleTypeMismatch(expected: String, received: String)
-    case taskExplicitlyCanceled
 }
 
 extension AssertionFailure {
@@ -34,8 +33,6 @@ extension AssertionFailure {
             return "Expected to be called \(expectedCount) time(s) but called \(calledCount) time(s)"
         case .testDoubleTypeMismatch(let expected, let received):
             return "Expected closure to be type of \(expected), received \(received)"
-        case .taskExplicitlyCanceled:
-            return "Task explicitly canceled"
         }
     }
 }
